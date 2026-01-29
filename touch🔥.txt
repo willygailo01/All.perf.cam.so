@@ -1,0 +1,119 @@
+
+echo "==== STARTING TOUCH PERFORMANCE BOOST ===="
+
+# TOUCH SAMPLING RATE - MAX
+settings put system touch_sampling_rate 480
+settings put system ro.input.touch_sampling_rate 480
+settings put global touch_sampling_rate 480
+settings put system touch_sampling_rate_override 1
+settings put system touch.sampling_boost 1
+settings put system persist.sys.touch.sampling_boost 1
+
+# TOUCH RESPONSE - INSTANT
+settings put system touch_response_time 0
+settings put system touch_response_rate 1
+settings put system touch_delay 0
+settings put system sf_touch_timer_ms 0
+settings put system ro.surface_flinger.set_touch_timer_ms 0
+settings put system surface_flinger.set_touch_timer_ms 0
+
+# TOUCH SENSITIVITY - MAXIMUM
+settings put system touch_sensitivity 10
+settings put system touchscreen_sensitivity 10
+settings put system touchscreen_sensitivity_mode 10
+settings put system touchscreen_sensitivity_scale 3.0
+settings put system adaptive_touch_sensitivity speed
+settings put system touch_tap_sensitivity 1
+
+# TOUCH BOOST - ENABLED
+settings put system touch_boost 1
+settings put system touch.boost true
+settings put system touchboost 1
+settings put system input.touch_boost 1
+settings put system touch_boost_fps 240
+settings put system touch_boost_threshold 1
+
+# TOUCH FILTER - OPTIMIZED
+settings put system touch.filter.level 0
+settings put system touch.filter.tftype4.Enabled 0
+settings put system touch_rate_control 0
+
+# TOUCH SLOP - MINIMUM (faster response)
+settings put system touch_slop 4
+settings put system view.touch_slop 4
+settings put system qti.inputopts.movetouchslop 0.3
+settings put system persist.vendor.qti.inputopts.movetouchslop 0.5
+
+# MULTI-TOUCH - OPTIMIZED
+settings put system MultitouchMinDistance 0.5px
+settings put system MultitouchSettleInterval 0.05ms
+settings put system max_num_touch 10
+
+# TOUCH ACCELERATION - ENABLED
+settings put system touch.accelerate.hw 1
+settings put system touch.accelerated.hw 1
+settings put system touch.isHardware.accelerated true
+settings put system touch.responsive 1
+
+# TOUCH CALIBRATION - PERFORMANCE MODE
+settings put system touch.coverage.calibration octagram
+settings put system touch.distance.calibration geometric
+settings put system touch.size.calibration geometric
+settings put system touch.pressure.calibration auto
+settings put system touch.orientation.calibration auto
+
+# TOUCH SCALE/SIZE - OPTIMIZED
+settings put system touch.distance.scale 0.05
+settings put system touch.pressure.scale 0.0005
+settings put system touch.size.scale 1
+settings put system touch_distance_scale 0
+
+# POLLING RATE - MAX
+settings put system service.touch.tpf 240
+settings put system touch.polling_rate 480
+
+# GAME MODE TOUCH - ENABLED
+settings put system touch_feature_gamemode_enable 1
+settings put system touchfeature.gamemode.enable true
+settings put system touchpanel_game_switch_enable 1
+
+# TOUCH BLOCKING - DISABLED (faster input)
+settings put system touch_blocking_period 0
+settings put system block_untrusted_touches 0
+
+# POINTER SPEED - MAX
+settings put system pointer_speed 7
+settings put system touchscreen_pointer_speed 100
+
+# SHOW TOUCHES - DISABLED (for performance)
+settings put system show_touches 0
+
+# LOW LATENCY TOUCH - ENABLED
+settings put system windowsmgr.support_low_latency_touch true
+settings put system persist.device_config.aconfig_flags.input.touch_screen_sample_interval_ms 2
+
+# TOUCH GESTURE - OPTIMIZED
+settings put system touch.gestureMode spots
+settings put system touch_gesture_delay 0
+
+# VIBRATE ON TOUCH - DISABLED (saves resources)
+settings put system vibrate_on_touch 0
+settings put system touchscreen_gesture_haptic_feedback 0
+
+# TOUCH EXPLORATION - DISABLED
+settings put system touch_exploration_enabled 0
+
+# MAX REFRESH RATE FOR TOUCH
+settings put system touch_boost_fps 240
+settings put system min.touch.major 0
+settings put system min.touch.minor 0
+
+echo "==== TOUCH BOOST COMPLETE ===="
+echo "Reboot recommended for full effect"
+echo ""
+echo "Current Settings:"
+settings get system touch_sampling_rate
+settings get system touch_sensitivity
+settings get system touch_boost
+
+

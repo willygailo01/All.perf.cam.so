@@ -1,0 +1,393 @@
+#!/system/bin/sh
+
+echo "Enabling Vulkan and maximizing GPU performance..."
+sleep 10
+
+# Enable Vulkan API
+echo "Enabling Vulkan API..."
+settings put system debug.hwui.use_vulkan 1
+settings put system debug.hwui.use_vulkan 1
+settings put system ro.hwui.use_vulkan 1
+settings put system debug.hwui.use_vulkan true
+settings put system ro.hwui.use_vulkan 1
+sleep 1
+
+# Force Vulkan renderer
+echo "Forcing Vulkan renderer..."
+settings put system ro.hardware.vulkan mali
+settings put system hwui_renderer vulkan
+settings put system hwui_renderer vulkan
+settings put system ro.hardware.vulkan mali
+sleep 1
+
+# Enable GPU rendering
+echo "Enabling GPU rendering..."
+settings put system debug.hwui.renderer skiagl
+settings put system debug.hwui.renderer skiagl
+settings put system debug.egl.hw 1
+settings put system debug.egl.hw 1
+settings put system debug.egl.hw 1
+sleep 1
+
+# Force GPU composition
+echo "Forcing GPU composition..."
+settings put system debug.sf.hw 1
+settings put system debug.sf.hw 1
+settings put system debug.sf.disable_backpressure 1
+settings put system debug.sf.hw 1
+settings put system debug.sf.disable_backpressure 1
+sleep 1
+
+# Disable GPU throttling
+echo "Disabling GPU throttling..."
+settings put system debug.gpu.throttle 0
+settings put system debug.gpu.throttle 0
+settings put system debug.gpu.throttle 0
+sleep 1
+
+# Mali GPU specific optimizations
+echo "Optimizing Mali GPU..."
+settings put system ro.config.gpu.optimization 1
+settings put system persist.sys.gpu.performance 1
+settings put system gpu_debug_level 0
+settings put system gpu_debug_level 0
+settings put system ro.config.gpu.optimization true
+settings put system persist.sys.gpu.performance 1
+sleep 1
+
+# Force maximum GPU clock
+echo "Setting GPU to maximum performance..."
+settings put system vendor.gpu.max_freq 1000000000
+settings put system persist.sys.gpu.max_freq 1000000000
+settings put global gpu_max_clock 999999
+settings put system gpu_max_clock 999999
+settings put system vendor.gpu.max_freq 1000000000
+settings put system persist.sys.gpu.max_freq 1000000000
+sleep 1
+
+# Disable GPU power saving
+echo "Disabling GPU power saving..."
+settings put system persist.sys.gpu.powersave 0
+settings put system vendor.gpu.powersave 0
+settings put system gpu_power_save 0
+settings put system gpu_power_save 0
+settings put system persist.sys.gpu.powersave 0
+settings put system vendor.gpu.powersave 0
+sleep 1
+
+# OpenGL optimizations
+echo "Optimizing OpenGL..."
+settings put system debug.egl.profiler 1
+settings put system debug.egl.buffcount 4
+settings put system debug.hwui.use_buffer_age 0
+settings put system debug.egl.profiler 1
+settings put system debug.egl.buffcount 4
+settings put system debug.hwui.use_buffer_age false
+sleep 1
+
+# Force hardware acceleration
+echo "Forcing hardware acceleration..."
+settings put system debug.hwui.disable_vsync 0
+settings put system debug.hwui.disable_vsync 0
+settings put system debug.hwui.use_partial_updates 0
+settings put system debug.hwui.use_partial_updates 0
+settings put system debug.hwui.render_thread 1
+settings put system debug.hwui.disable_vsync false
+settings put system debug.hwui.use_partial_updates false
+settings put system debug.hwui.render_thread true
+sleep 1
+
+# Skia optimizations
+echo "Optimizing Skia renderer..."
+settings put system debug.hwui.skia_atrace_enabled 0
+settings put system debug.hwui.use_hint_manager 1
+settings put system debug.hwui.target_cpu_time_percent 90
+settings put system setprop debug.hwui.skia_atrace_enabled false
+settings put system setprop debug.hwui.use_hint_manager true
+settings put system setprop debug.hwui.target_cpu_time_percent 90
+sleep 1
+
+# Force 144Hz refresh rate
+echo "Forcing 144Hz refresh rate..."
+settings put system peak_refresh_rate 144
+settings put system min_refresh_rate 144
+settings put system peak_refresh_rate 144
+settings put system min_refresh_rate 144
+settings put system user_refresh_rate 144
+settings put system forced_refresh_rate 144
+sleep 1
+
+# SurfaceFlinger 144Hz settings
+echo "Configuring SurfaceFlinger for 144Hz..."
+settings put system debug.sf.frame_rate_multiple_threshold 144
+settings put system ro.surface_flinger.max_frame_buffer_acquired_buffers 3
+settings put system ro.surface_flinger.vsync_event_phase_offset_ns 2000000
+settings put system ro.surface_flinger.vsync_sf_event_phase_offset_ns 6000000
+settings put system debug.sf.enable_hwc_vds 1
+settings put system debug.sf.high_fps_late_app_phase_offset_ns 1000000
+settings put system debug.sf.high_fps_late_sf_phase_offset_ns 1000000
+settings put system debug.sf.phase_offset_threshold_for_next_vsync_ns 6100000
+settings put system debug.sf.enable_gl_backpressure 0
+settings put system setprop debug.sf.frame_rate_multiple_threshold 144
+settings put system setprop ro.surface_flinger.max_frame_buffer_acquired_buffers 3
+settings put system setprop ro.surface_flinger.vsync_event_phase_offset_ns 2000000
+settings put system setprop ro.surface_flinger.vsync_sf_event_phase_offset_ns 6000000
+settings put system setprop debug.sf.enable_hwc_vds 1
+sleep 1
+
+# SurfaceFlinger 144fps max settings
+echo "Setting SurfaceFlinger max 144fps..."
+settings put system debug.sf.max_igbp_list_size 144
+settings put system debug.sf.support_kernel_idle_timer 0
+settings put system ro.surface_flinger.force_hwc_copy_for_virtual_displays 0
+settings put system ro.surface_flinger.max_virtual_display_dimension 144
+settings put system ro.surface_flinger.protected_contents 1
+settings put system ro.surface_flinger.use_color_management 1
+settings put system ro.surface_flinger.wcg_composition_dataspace 143261696
+settings put system debug.sf.predict_hwc_composition_strategy 0
+settings put system debug.sf.treat_170m_as_sRGB 0
+settings put system setprop debug.sf.max_igbp_list_size 144
+settings put system setprop debug.sf.support_kernel_idle_timer 0
+settings put system setprop ro.surface_flinger.force_hwc_copy_for_virtual_displays 0
+settings put system setprop ro.surface_flinger.max_virtual_display_dimension 144
+sleep 1
+
+# Additional SurfaceFlinger optimizations for high FPS
+echo "Additional SurfaceFlinger high FPS optimizations..."
+settings put system debug.sf.early_phase_offset_ns 500000
+settings put system debug.sf.early_app_phase_offset_ns 500000
+settings put system debug.sf.early_gl_phase_offset_ns 500000
+settings put system debug.sf.early_gl_app_phase_offset_ns 500000
+settings put system debug.sf.use_phase_offsets_as_durations 1
+settings put system debug.sf.late.sf.duration 10500000
+settings put system debug.sf.late.app.duration 20500000
+settings put system debug.sf.early.sf.duration 16000000
+settings put system debug.sf.early.app.duration 16500000
+settings put system debug.sf.earlyGl.sf.duration 13500000
+settings put system debug.sf.earlyGl.app.duration 21000000
+settings put system setprop debug.sf.early_phase_offset_ns 500000
+settings put system setprop debug.sf.early_app_phase_offset_ns 500000
+settings put system setprop debug.sf.early_gl_phase_offset_ns 500000
+settings put system setprop debug.sf.early_gl_app_phase_offset_ns 500000
+sleep 1
+
+# Disable frame rate limiting
+echo "Disabling frame rate limits for 144fps..."
+settings put system debug.gr.numframebuffers 3
+settings put system debug.gr.swapinterval 0
+settings put system max_frame_rate 144
+settings put system max_frame_rate 144
+settings put system min_frame_rate 144
+settings put system ro.max.fling_velocity 12000
+settings put system ro.min.fling_velocity 8000
+settings put system setprop debug.gr.numframebuffers 3
+settings put system setprop debug.gr.swapinterval 0
+settings put system setprop ro.max.fling_velocity 12000
+settings put system setprop ro.min.fling_velocity 8000
+sleep 1
+
+# Additional GPU performance settings
+echo "Applying additional GPU settings..."
+settings put system debug.composition.type gpu
+settings put system debug.performance.tuning 1
+settings put system video.accelerate.hw 1
+settings put system setprop debug.composition.type gpu
+settings put system setprop debug.performance.tuning 1
+settings put system setprop video.accelerate.hw 1
+sleep 1
+
+# Gaming optimizations
+echo "Enabling gaming optimizations..."
+settings put system game_driver_all_apps 1
+settings put system game_driver_all_apps 1
+settings put system persist.sys.game.mode 3
+settings put system setprop persist.sys.game.mode 3
+sleep 1
+
+# Disable background GPU restrictions
+echo "Disabling GPU restrictions..."
+settings put system debug.sf.latch_unsignaled 1
+settings put system debug.sf.recomputecrop 0
+settings put system debug.sf.disable_client_composition_cache 1
+settings put system setprop debug.sf.latch_unsignaled 1
+settings put system setprop debug.sf.recomputecrop 0
+settings put system setprop debug.sf.disable_client_composition_cache 1
+sleep 1
+
+# Additional Vulkan optimizations
+echo "Additional Vulkan optimizations..."
+settings put system debug.vulkan.layers 0
+settings put system debug.vulkan.enable_validation 0
+settings put system debug.vulkan.layers 0
+settings put system setprop debug.vulkan.layers ""
+sleep 1
+
+# Force GPU always active
+echo "Forcing GPU always active..."
+settings put system debug.hwui.force_dark 0
+settings put system debug.hwui.fps_divisor 1
+settings put system debug.hwui.force_dark 0
+settings put system setprop debug.hwui.force_dark false
+settings put system setprop debug.hwui.fps_divisor 1
+sleep 1
+
+# Disable GPU driver optimizations (for max performance)
+echo "Disabling GPU driver optimizations..."
+settings put system debug.gpu.driver_opt 0
+settings put system debug.gpu.driver_opt 0
+settings put system setprop debug.gpu.driver_opt 0
+sleep 1
+
+# Force texture cache size to maximum
+echo "Maximizing texture cache..."
+settings put system debug.hwui.texture_cache_size 96
+settings put system debug.hwui.texture_cache_size 96
+settings put system setprop debug.hwui.texture_cache_size 96
+sleep 1
+
+# Disable GPU memory management
+echo "Disabling GPU memory management..."
+settings put system debug.hwui.layer_cache_size 64
+settings put system debug.hwui.path_cache_size 32
+settings put system debug.hwui.layer_cache_size 64
+settings put system setprop debug.hwui.layer_cache_size 64
+settings put system setprop debug.hwui.path_cache_size 32
+sleep 1
+
+# Force maximum GPU pipeline
+echo "Forcing maximum GPU pipeline..."
+settings put system debug.hwui.pipeline 1
+settings put system debug.hwui.pipeline 1
+settings put system setprop debug.hwui.pipeline true
+sleep 1
+
+# Additional performance tweaks for 144Hz/144fps
+echo "Additional performance tweaks for 144Hz/144fps..."
+settings put system windowsmgr.max_events_per_sec 240
+settings put system windowsmgr.max_events_per_sec 240
+settings put system touch.pressure.scale 0.001
+settings put system touch.size.scale 1
+settings put system touch.distance.scale 0.5
+settings put system persist.sys.ui.hw 1
+settings put system persist.sys.scrollingcache 3
+settings put system debug.performance.tuning 1
+settings put system setprop persist.sys.ui.hw 1
+settings put system setprop persist.sys.scrollingcache 3
+sleep 1
+
+# Disable frame buffer compression
+echo "Disabling frame buffer compression..."
+settings put system debug.fb.rgb565 0
+settings put system debug.fb.rgb565 0
+settings put system setprop debug.fb.rgb565 0
+sleep 1
+
+# Force triple buffering
+echo "Forcing triple buffering..."
+settings put system debug.hwui.num_buffers 3
+settings put system debug.hwui.num_buffers 3
+settings put system setprop debug.hwui.num_buffers 3
+sleep 1
+
+# Maximum GPU overdraw
+echo "Setting maximum GPU overdraw..."
+settings put system debug.hwui.overdraw 0
+settings put system setprop debug.hwui.overdraw false
+sleep 1
+
+# Force GPU profiling off (for max performance)
+echo "Disabling GPU profiling..."
+settings put system debug.hwui.profile 0
+settings put system setprop debug.hwui.profile false
+sleep 1
+
+# Additional Mali specific
+echo "Additional Mali GPU tweaks..."
+settings put system ro.mali.debug 0
+settings put system persist.sys.mali.perf 1
+settings put system setprop ro.mali.debug 0
+settings put system setprop persist.sys.mali.perf 1
+sleep 1
+
+# Force hardware overlays
+echo "Forcing hardware overlays..."
+settings put system debug.hwui.use_gpu_pixel_buffers 1
+settings put system debug.hwui.render_dirty_regions 0
+settings put system persist.sys.force_hw_ui 1
+settings put system setprop debug.hwui.use_gpu_pixel_buffers 1
+settings put system setprop debug.hwui.render_dirty_regions false
+settings put system setprop persist.sys.force_hw_ui 1
+sleep 1
+
+# Disable thermal throttling
+echo "Disabling thermal throttling..."
+settings put system persist.sys.thermal.enable 0
+settings put system ro.config.hw_thermal_enable 0
+settings put system sys.thermal.enable 0
+settings put system setprop persist.sys.thermal.enable 0
+settings put system setprop ro.config.hw_thermal_enable 0
+sleep 1
+
+# Maximum touch sampling rate for 144Hz
+echo "Setting maximum touch sampling rate..."
+settings put system touch.deviceType touchScreen
+settings put system touch.gestureMode spots
+settings put system debug.input.sample_rate 240
+settings put system ro.input.touch_sampling_rate 240
+settings put system setprop debug.input.sample_rate 240
+settings put system setprop ro.input.touch_sampling_rate 240
+sleep 1
+
+# Force maximum memory allocation for graphics
+echo "Maximizing graphics memory allocation..."
+settings put system dalvik.vm.heapsize 512m
+settings put system dalvik.vm.heapgrowthlimit 256m
+settings put system persist.sys.dalvik.vm.lib.2 libart.so
+settings put system ro.config.max_starting_bg 8
+settings put system setprop dalvik.vm.heapsize 512m
+settings put system setprop dalvik.vm.heapgrowthlimit 256m
+sleep 1
+
+# Disable unnecessary visual effects
+echo "Disabling unnecessary visual effects for performance..."
+settings put system window_animation_scale 0.0
+settings put system transition_animation_scale 0.0
+settings put system animator_duration_scale 0.0
+settings put system window_animation_scale 0.0
+settings put system transition_animation_scale 0.0
+settings put system animator_duration_scale 0.0
+sleep 1
+
+# Force color mode for performance
+echo "Setting optimal color mode..."
+settings put system display_color_mode 0
+settings put system screen_brightness_mode 0
+settings put system persist.sys.sf.color_saturation 1.0
+settings put system setprop persist.sys.sf.color_saturation 1.0
+sleep 1
+
+# Additional SurfaceFlinger display settings
+echo "Final SurfaceFlinger optimizations..."
+settings put system debug.sf.showupdates 0
+settings put system debug.sf.ddms 0
+settings put system debug.composition.type gpu
+settings put system persist.sys.composition.type gpu
+settings put system debug.overlayui.enable 1
+settings put system setprop debug.sf.showupdates 0
+settings put system setprop debug.sf.ddms 0
+settings put system setprop persist.sys.composition.type gpu
+sleep 1
+
+echo "============================================"
+echo "Vulkan and GPU optimization completed!"
+echo "Your GPU is now running at MAXIMUM performance"
+echo "Settings applied:"
+echo "- 144Hz refresh rate ENABLED"
+echo "- 144fps maximum frame rate ENABLED"
+echo "- SurfaceFlinger optimized for high FPS"
+echo "- All GPU throttling DISABLED"
+echo "- Maximum GPU clock speeds SET"
+echo "- Triple buffering ENABLED"
+echo "- Hardware acceleration FORCED"
+echo "============================================"
+echo " "

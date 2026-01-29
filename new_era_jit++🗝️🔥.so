@@ -1,0 +1,295 @@
+#!/system/bin/sh
+# ========================================
+# ULTIMATE ANDROID PERFORMANCE BOOSTER
+# NON-ROOTED VERSION
+# For Gaming & Maximum Performance
+# ========================================
+
+echo "╔════════════════════════════════════════╗"
+echo "║  ANDROID PERFORMANCE OPTIMIZER v2.0    ║"
+echo "║  NON-ROOT EDITION                      ║"
+echo "╚════════════════════════════════════════╝"
+echo ""
+sleep 30
+
+# ========================================
+# TOUCH PERFORMANCE - MAXIMUM
+# ========================================
+echo "[1/10] Optimizing Touch Response..."
+
+settings put system touch_sampling_rate 480
+settings put system ro.input.touch_sampling_rate 480
+settings put global touch_sampling_rate 480
+settings put system touch_sampling_rate_override 1
+settings put system touch.sampling_boost 1
+settings put system persist.sys.touch.sampling_boost 1
+settings put system touch_response_time 0
+settings put system touch_response_rate 1
+settings put system touch_delay 0
+settings put system sf_touch_timer_ms 0
+settings put system ro.surface_flinger.set_touch_timer_ms 0
+settings put system surface_flinger.set_touch_timer_ms 0
+settings put system touch_sensitivity 10
+settings put system touchscreen_sensitivity 10
+settings put system touchscreen_sensitivity_mode 10
+settings put system touchscreen_sensitivity_scale 3.0
+settings put system adaptive_touch_sensitivity speed
+settings put system touch_tap_sensitivity 1
+settings put system touch_boost 1
+settings put system touch.boost true
+settings put system touchboost 1
+settings put system input.touch_boost 1
+settings put system touch_boost_fps 240
+settings put system touch_boost_threshold 1
+settings put system touch.filter.level 0
+settings put system touch_rate_control 0
+settings put system touch_slop 4
+settings put system view.touch_slop 4
+settings put system qti.inputopts.movetouchslop 0.3
+settings put system MultitouchMinDistance 0.5px
+settings put system MultitouchSettleInterval 0.05ms
+settings put system max_num_touch 10
+settings put system touch.accelerate.hw 1
+settings put system touch.accelerated.hw 1
+settings put system touch.isHardware.accelerated true
+settings put system touch.responsive 1
+settings put system touch.distance.scale 0.05
+settings put system touch.pressure.scale 0.0005
+settings put system service.touch.tpf 240
+settings put system touch.polling_rate 480
+settings put system touch_feature_gamemode_enable 1
+settings put system touchfeature.gamemode.enable true
+settings put system touchpanel_game_switch_enable 1
+settings put system touch_blocking_period 0
+settings put system block_untrusted_touches 0
+settings put system pointer_speed 7
+settings put system touchscreen_pointer_speed 100
+settings put system show_touches 0
+settings put system windowsmgr.support_low_latency_touch true
+settings put system vibrate_on_touch 0
+settings put system touchscreen_gesture_haptic_feedback 0
+settings put system touch_exploration_enabled 0
+
+# ========================================
+# DISPLAY & GPU PERFORMANCE
+# ========================================
+echo "[2/10] Optimizing Display & GPU..."
+sleep 2
+
+settings put system peak_refresh_rate 144.0
+settings put system min_refresh_rate 60.0
+settings put system user_refresh_rate 144.0
+settings put global animator_duration_scale 0.5
+settings put global transition_animation_scale 0.5
+settings put global window_animation_scale 0.5
+settings put system force_hw_ui 1
+settings put system hwui.disable_vsync 1
+settings put system hwui.render_dirty_regions false
+settings put system debug.egl.hw 1
+settings put system debug.sf.hw 1
+settings put system debug.composition.type gpu
+settings put system debug.performance.tuning 1
+settings put system video.accelerate.hw 1
+settings put system debug.sf.disable_backpressure 1
+settings put system debug.sf.latch_unsignaled 1
+settings put system debug.sf.recomputecrop 0
+settings put system debug.cpurend.vsync false
+settings put global window_animation_scale 0.5
+settings put system ro.config.enable.hw_accel true
+settings put system ro.product.gpu.driver 1
+
+# ========================================
+# RENDERING & GRAPHICS
+# ========================================
+echo "[3/10] Optimizing Graphics Rendering..."
+sleep 2
+
+settings put system debug.gr.numframebuffers 3
+settings put system debug.overlayui.enable 1
+settings put system debug.qctwa.statusbar 1
+settings put system debug.qctwa.preservebuf 1
+settings put system debug.enabletr true
+settings put system ro.media.enc.jpeg.quality 100
+settings put system ro.media.dec.jpeg.memcap 8000000
+settings put system ro.media.enc.hprof.vid.bps 8000000
+settings put system debug.sf.enable_gl_backpressure 0
+settings put system debug.sf.disable_client_composition_cache 1
+
+# ========================================
+# MEMORY & RAM OPTIMIZATION
+# ========================================
+echo "[4/10] Optimizing Memory Management..."
+sleep 2 
+
+settings put global activity_manager_constants max_cached_processes=128
+settings put global activity_manager_constants max_phantom_processes=2147483647
+settings put global cached_apps_freezer enabled
+settings put system ram_boost 1
+settings put system sys.mem.max_hidden_apps 10
+settings put system ro.config.low_ram false
+settings put system ro.config.hw_ram_boost 1
+settings put system persist.sys.ram_minfree "18432,23040,27648,32256,36864,46080"
+
+# ========================================
+# CPU PERFORMANCE
+# ========================================
+echo "[5/10] Optimizing CPU Performance..."
+sleep 2 
+
+settings put system performance_mode 1
+settings put system power_mode 0
+settings put system cpu_boost 1
+settings put system cpu.boost 1
+settings put global device_provisioned 1
+settings put system ro.config.hw_quickpoweron true
+settings put system sys.perf.boost 1
+settings put system persist.sys.perf.pre_start_app.support true
+
+# ========================================
+# DALVIK VM & ART OPTIMIZATION
+# ========================================
+echo "[6/10] Optimizing Dalvik VM & ART Runtime..."
+sleep 2 
+
+# Based sa iyong current settings, i-optimize natin
+settings put global dalvik.vm.heapstartsize 16m
+settings put global dalvik.vm.heapgrowthlimit 384m
+settings put global dalvik.vm.heapsize 768m
+settings put global dalvik.vm.heaptargetutilization 0.9
+settings put global dalvik.vm.heapminfree 2m
+settings put global dalvik.vm.heapmaxfree 8m
+
+# JIT Optimization
+settings put global dalvik.vm.usejit true
+settings put global dalvik.vm.usejitprofiles true
+settings put global dalvik.vm.dex2oat-filter speed
+settings put global dalvik.vm.image-dex2oat-filter speed
+settings put global dalvik.vm.dex2oat-threads 8
+settings put global dalvik.vm.boot-dex2oat-threads 8
+settings put global dalvik.vm.image-dex2oat-threads 8
+
+# ========================================
+# NETWORK OPTIMIZATION
+# ========================================
+echo "[7/10] Optimizing Network Performance..."
+sleep 2 
+
+settings put global network_scoring_ui_enabled 1
+settings put global network_recommendations_enabled 1
+settings put global wifi_scan_always_enabled 1
+settings put global wifi_enhanced_auto_join 1
+settings put global wifi_network_show_rssi 1
+settings put global ble_scan_always_enabled 1
+settings put global network_avoid_bad_wifi 0
+settings put global adaptive_battery_management_enabled 0
+
+# ========================================
+# BATTERY OPTIMIZATION (Performance Mode)
+# ========================================
+echo "[8/10] Setting Performance Power Mode..."
+sleep 2 
+
+settings put global low_power 0
+settings put global battery_saver_enabled 0
+settings put global automatic_power_save_mode 0
+settings put global dynamic_power_savings_enabled 0
+settings put global app_standby_enabled 0
+settings put global forced_app_standby_enabled 0
+settings put global adaptive_battery_management_enabled 0
+settings put global app_auto_restriction_enabled false
+settings put global smart_5g_enabled 0
+
+# ========================================
+# GAMING OPTIMIZATION
+# ========================================
+echo "[9/10] Enabling Gaming Optimizations..."
+sleep 2 
+
+settings put system game_mode 1
+settings put system game_boost 1
+settings put system gaming_mode 1
+settings put system game_driver_all_apps 1
+settings put system game_fps 144
+settings put system ro.config.gameopt 1
+settings put system sys.griffin.allow_gms_start_other 1
+settings put system camera_start_optimize 1
+settings put system transsion_launch_start_exit_support 3
+settings put system mtk_perf_fast_start_win 1
+settings put system mtk_perf_simple_start_win 1
+
+# ========================================
+# SYSTEM OPTIMIZATION
+# ========================================
+echo "[10/10] Final System Optimizations..."
+sleep 2 
+
+settings put system stay_on_while_plugged_in 7
+settings put system screen_brightness_mode 0
+settings put system accelerometer_rotation 0
+settings put system development_settings_enabled 1
+settings put system adb_enabled 0
+settings put system pointer_location 0
+settings put system boot_count 0
+settings put system tether_dun_required 0
+settings put system notification_light_pulse 0
+settings put system heads_up_notifications_enabled 0
+settings put system haptic_feedback_enabled 0
+
+# Disable unused features for performance
+settings put system ble_scan_always_enabled 0
+settings put system network_recommendations_enabled 0
+settings put system screen_off_timeout 600000
+
+# ========================================
+# ADDITIONAL PERFORMANCE TWEAKS
+# ========================================
+echo ""
+echo "Applying Additional Tweaks..."
+sleep 2 
+
+# Thermal throttling reduction
+settings put system thermal_limit_mode 0
+settings put system sys.thermal.enable 0
+
+# IO Scheduler optimization
+settings put system io.scheduler noop
+
+# Zram optimization
+settings put system ro.config.zram_compressor lz4
+
+# Vsync optimization
+settings put system debug.hwui.use_buffer_age false
+settings put system debug.hwui.use_partial_updates false
+
+# ========================================
+# COMPLETION
+# ========================================
+echo ""
+echo "╔════════════════════════════════════════╗"
+echo "║  OPTIMIZATION COMPLETE!                ║"
+echo "╚════════════════════════════════════════╝"
+echo ""
+echo "Applied Settings:"
+echo "├─ Touch Sampling: 480Hz"
+echo "├─ Refresh Rate: 144Hz"
+echo "├─ Animation Scale: 0.5x"
+echo "├─ Touch Sensitivity: MAX"
+echo "├─ GPU Rendering: Hardware Accelerated"
+echo "├─ JIT Compiler: Optimized"
+echo "├─ RAM Management: Performance Mode"
+echo "├─ Power Mode: Maximum Performance"
+echo "└─ Gaming Mode: Enabled"
+echo ""
+echo "⚠️  IMPORTANT NOTES:"
+echo "├─ Battery drain will be higher"
+echo "├─ Device may run warmer"
+echo "├─ Some settings reset after reboot"
+echo "└─ Run this script after each restart"
+echo ""
+echo "💡 RECOMMENDATIONS:"
+echo "├─ Clear cache: Settings → Storage → Cached data"
+echo "├─ Disable unused apps"
+echo "├─ Keep storage above 25% free"
+echo "└─ Restart device for best results"
+echo ""
+echo "Script completed successfully! ✓"

@@ -1,0 +1,113 @@
+#!/system/bin/sh
+# ============================================
+# TECNO CAMON 40 PRO 5G - MAX VOLUME SCRIPT
+# Force Maximum Sound - No Limits - No Warning
+# ============================================
+# Run this script using Terminal Emulator (Termux recommended)
+# WARNING: High volume can damage speakers and hearing
+# Use at your own risk!
+# ============================================
+
+echo "=================================="
+echo "TECNO CAMON 40 PRO 5G"
+echo "MAX VOLUME FORCE SCRIPT"
+echo "=================================="
+echo ""
+
+
+echo "[1/7] Disabling safe volume warning..."
+# Disable safe audio volume state (0=disabled, 1=enabled, 2=inactive)
+settings put global audio_safe_volume_state 3
+settings put global audio_safe_volume_state 2
+echo "✓ Safe volume warning disabled"
+
+echo ""
+echo "[2/7] Setting maximum media volume..."
+# Set all audio streams to maximum (0-15 scale)
+# Stream 3 = MUSIC/MEDIA (most important)
+# Stream 1 = SYSTEM
+# Stream 4 = ALARM
+# Stream 5 = NOTIFICATION
+# Stream 2 = RING
+
+# Using media volume command (Android 5+)
+media volume --show --stream 3 --set 15
+
+# Alternative method using service call
+service call audio 7 i32 3 i32 1 i32 15
+
+# Using input keyevent to press volume up multiple times
+for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15; do
+    input keyevent 24  # Volume UP key
+done
+echo "✓ Media volume set to MAXIMUM"
+
+echo ""
+echo "[3/7] Forcing maximum speaker volume..."
+# Set speaker volume to maximum
+settings put system volume_music_speaker 15
+settings put system volume_music 15
+
+# For headphones/headset (if connected)
+settings put system volume_music_headphone 15
+settings put system volume_music_headset 15
+settings put system volume_music_bt_a2dp 15
+
+echo "✓ Speaker volume maximized"
+
+echo ""
+echo "[4/7] Disabling absolute volume limits..."
+# Disable Bluetooth absolute volume control
+settings put global bluetooth_disabled_profiles 0
+settings put secure bluetooth_a2dp_sink_priority_<address> 1000
+
+echo "✓ Absolute volume limits disabled"
+
+echo ""
+echo "[5/7] Setting audio bypass properties..."
+# Set audio safe media bypass (prevents EU volume limit)
+settings put system setprop audio.safemedia.bypass true
+settings put system setprop ro.config.media_vol_steps 30
+settings put system setprop ro.config.vc_call_vol_steps 14
+
+echo "✓ Audio bypass enabled"
+
+echo ""
+echo "[6/7] Maximizing system sounds..."
+# Max out all other volume streams
+settings put system volume_system 15
+settings put system volume_alarm 15
+settings put system volume_notification 15
+settings put system volume_ring 15
+settings put system volume_voice 15
+
+echo "✓ All system volumes maximized"
+
+echo ""
+echo "[7/7] Applying Dolby Atmos settings (if available)..."
+# Force Dolby Atmos to max (Tecno Camon 40 Pro 5G has Dolby)
+settings put system setprop vendor.audio.dolby.dap.enabled true
+settings put system setprop persist.vendor.audio.dolby.enable true
+
+echo "✓ Dolby Atmos optimized"
+
+echo ""
+echo "=================================="
+echo "✅ MAX VOLUME SCRIPT COMPLETED!"
+echo "=================================="
+echo ""
+echo "Current Volume Settings:"
+dumpsys audio | grep "volume"
+echo ""
+echo "⚠️  IMPORTANT NOTES:"
+echo "1. Volume is now at MAXIMUM with no limits"
+echo "2. Safe volume warning is DISABLED"
+echo "3. Settings persist until reboot"
+echo "4. Re-run script after reboot if needed"
+echo "5. To make permanent, add to init.d or use Tasker"
+echo ""
+echo "To revert changes, reboot your phone"
+echo "Or run: settings put global audio_safe_volume_state 1"
+echo ""
+echo "⚠️  Use responsibly! Protect your hearing and speakers!"
+echo "=================================="

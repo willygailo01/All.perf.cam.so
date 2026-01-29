@@ -1,0 +1,261 @@
+#!/bin/bash
+
+# ========================================
+# TECNO CAMON 40 PRO 5G - MAXIMUM PERFORMANCE UNLOCK
+# MediaTek Dimensity 7300 Ultimate Optimization
+# HiOS 14 Game Space Limiter Bypass
+# Non-Root Advanced Performance Script
+# ========================================
+
+echo "Starting Tecno Camon 40 Pro 5G Maximum Performance Mode..."
+
+# ===== DISPLAY: Force 144Hz Maximum =====
+settings put system peak_refresh_rate 144
+settings put system min_refresh_rate 144
+settings put system user_refresh_rate 144
+settings put secure refresh_rate_mode 0
+settings put system force_high_refresh_rate 1
+settings put global display_framerate_override 144
+
+# ===== MediaTek DIMENSITY 7300 CPU GOVERNOR FORCE =====
+# Force Performance Governor (Cortex-A78 & A55)
+settings put system scaling_governor performance
+settings put system cpu_governor performance
+settings put global mtk_power_mode 0
+settings put system persist.sys.mtk.powerhal performance
+
+# CPU Frequency Override
+settings put system persist.sys.cpu.max_freq 2500000
+settings put system persist.sys.cpu.min_freq 2400000
+settings put global cpu_boost 1
+settings put system cpu_online_all 1
+
+# ===== Mali-G615 MC2 GPU UNLOCK =====
+# Force Maximum GPU Frequency (1047 MHz)
+settings put system persist.sys.gpu.max_freq 1557000000
+settings put system persist.sys.gpu.min_freq 1557000000
+settings put system persist.sys.gpu.performance 1
+settings put system persist.sys.gpu.powersave 0
+settings put global gpu_governor performance
+settings put system persist.sys.mali.perf 1
+settings put system debug.sf.gpu_comp_max_layers 100
+
+# Disable GPU Throttling
+settings put system persist.vendor.gpu.thermal.enable 0
+settings put system persist.vendor.gpu.throttling 0
+settings put system debug.sf.disable_gpu_throttle 1
+
+# ===== HiOS 14 GAME SPACE BYPASS =====
+# Disable Game Space Performance Limiters
+settings put system game_space_fps_limit 0
+settings put system game_space_performance_mode 3
+settings put system persist.sys.game.mode 3
+settings put global gaming_mode_active 1
+settings put system game_booster_enabled 1
+
+# Disable FPS Restrictions
+settings put system persist.sys.game_fps_limit 144
+settings put system persist.sys.enable_game_default_fps_uncap 1
+settings put system game_fps_override 144
+settings put system force_max_fps 1
+
+# HiOS Game Optimizer Disable
+settings put system hios_game_optimizer 0
+settings put system persist.sys.game_optimizer_enabled 0
+
+# ===== THERMAL THROTTLING DISABLE =====
+# Critical: Disable All Thermal Management
+settings put system persist.thermal.mode 0
+settings put system persist.sys.thermal.enable 0
+settings put system thermal_limit_enable 0
+settings put system thermal_throttling_enabled 0
+
+# MediaTek Thermal Engine Disable
+settings put system persist.vendor.mtk.thermal.enable 0
+settings put system persist.vendor.thermal.manager.enable 0
+settings put system persist.mtk.thermal.config 0
+
+# Disable Temperature Monitoring
+settings put system temp_control_enabled 0
+settings put system skin_temperature_control 0
+settings put system battery_thermal_throttling 0
+
+# ===== PERFORMANCE PROFILES =====
+# Force Maximum Performance Profile
+settings put global performance_mode_enabled 1
+settings put system persist.sys.performance_profile max
+settings put system power_save_mode 0
+settings put global low_power 0
+
+# Battery Performance Override
+settings put system persist.sys.battery_saver 0
+settings put global automatic_power_save_mode 0
+settings put global dynamic_power_savings_enabled 0
+settings put system persist.radio.add_power_save 0
+
+# ===== MEDIATEK HYPERENGINE OPTIMIZATION =====
+# Force HyperEngine Gaming Mode
+settings put system persist.sys.mtk_hyperengine 1
+settings put system mtk_hyperengine_gaming 3
+settings put system hyperengine_optimize 1
+
+# VRS (Variable Rate Shading) Force Enable
+settings put system persist.sys.vrs_enabled 1
+settings put system mali_vrs_enable 1
+
+# ===== 11-LAYER HEAT DISSIPATION OVERRIDE =====
+# Bypass Cooling System Limits
+settings put system persist.sys.cooling_mode 0
+settings put system vapor_chamber_control 0
+settings put system graphite_layer_optimization 0
+settings put system phase_change_plate_active 0
+
+# ===== TOUCH PERFORMANCE ZERO DELAY =====
+settings put system multi_exposure_mode 0
+settings put system multi_press_timeout 50
+settings put system multitouch.min_distance 0.2
+settings put system multitouch.settle_interval 0.005
+settings put system touch.pressure.scale 0.001
+settings put system persist.device_config.aconfig_flags.input.touch_screen_sample_interval_ms 1
+settings put system pointer_speed 0
+settings put system touch_response_optimization 1
+
+# ===== RENDERING & COMPOSITION =====
+# Force GPU Rendering
+settings put system persist.sys.composition.type gpu
+settings put system debug.sf.hw 1
+settings put system debug.egl.hw 1
+settings put system debug.composition.type gpu
+settings put system video.accelerate.hw 1
+settings put system hwui.render_dirty_regions false
+settings put system persist.sys.ui.hw 1
+
+# Disable Frame Rate Limiting
+settings put system debug.sf.disable_backpressure 1
+settings put system debug.sf.latch_unsignaled 1
+settings put system debug.sf.nobootanimation 1
+settings put system debug.cpurend.vsync false
+settings put system debug.sf.disable_client_composition_cache 1
+
+# ===== FPS UNLOCK ADVANCED =====
+# Nvidia-style FPS Controls
+settings put system persist.sys.NV_FPSLIMIT 144
+settings put system persist.sys.NV_POWERMODE 1
+settings put system persist.sys.NV_PROFVER 15
+settings put system persist.sys.NV_STEREOCTRL 0
+
+# Frame Timing Override
+settings put system debug.sf.frame_rate_multiple_threshold 144
+settings put system persist.sys.surfaceflinger.max_frame_buffer_acquired_buffers 5
+
+# ===== MEMORY & RAM OPTIMIZATION =====
+# Aggressive Memory Management
+settings put system persist.sys.scrollingcache 3
+settings put system persist.sys.purgeable_assets 1
+settings put global cached_apps_freezer enabled
+settings put global app_standby_enabled 0
+
+# Disable Background Restrictions
+settings put global forced_app_standby_enabled 0
+settings put system persist.service.lgospd.enable 0
+settings put system persist.service.pcsync.enable 0
+
+# ===== NETWORK PERFORMANCE =====
+# 5G Maximum Performance
+settings put global preferred_network_mode 33
+settings put global nr_connection_enabled 1
+settings put global 5g_mode_pref 1
+settings put global mobile_data_always_on 1
+
+# WiFi 6E Maximum
+settings put global wifi_6ghz_enabled 1
+settings put global wifi_6e_enabled 1
+settings put global wifi_sleep_policy 2
+settings put global wifi_suspend_optimizations_enabled 0
+
+# ===== AUDIO OPTIMIZATION =====
+settings put system persist.audio.fluence.speaker true
+settings put system persist.audio.fluence.voicecall true
+settings put system persist.audio.fluence.voicerec true
+settings put system mute_streams_affected 110
+
+# ===== ANIMATION SPEED =====
+settings put global window_animation_scale 0.0
+settings put global transition_animation_scale 0.0
+settings put global animator_duration_scale 0.0
+
+# ===== DIMENSITY 7300 SPECIFIC =====
+# MediaTek APU 655 AI Performance
+settings put system persist.sys.mtk_apu_mode performance
+settings put system mtk_ai_boost 1
+settings put system persist.vendor.ai.perf.enable 1
+
+# MediaTek 5G UltraSave Disable (Max Speed)
+settings put system persist.sys.mtk_ultrasave 0
+settings put global mtk_5g_powersave 0
+
+# ===== CAMERA PERFORMANCE =====
+settings put system persist.camera.cpp.duplication 1
+settings put system persist.camera.hal.debug.mask 0
+settings put system camera_boost_enabled 1
+
+# ===== ADVANCED KERNEL TWEAKS =====
+# Force Performance Tuning
+settings put system debug.performance.tuning 1
+settings put system persist.sys.dalvik.vm.lib.2 libart.so
+settings put system ro.config.enable.hw_accel true
+settings put system ro.product.gpu.driver 1
+
+# Disable Strict Mode
+settings put system persist.android.strictmode 0
+
+# ===== DEVELOPER OPTIONS =====
+settings put global development_settings_enabled 1
+settings put global stay_on_while_plugged_in 7
+settings put system screen_off_timeout 600000
+
+# ===== ACCESSIBILITY DISABLE (Performance) =====
+settings put secure accessibility_enabled 0
+settings put secure enabled_accessibility_services ""
+
+# ===== HAPTIC FEEDBACK =====
+settings put system haptic_feedback_enabled 1
+settings put system haptic_feedback_intensity 3
+
+# ===== ANDROID 15 SPECIFIC OVERRIDES =====
+settings put global sem_enhanced_cpu_responsiveness 1
+settings put system persist.sys.game_mode_performance 1
+settings put global enable_gpu_debug_layers 0
+settings put secure low_power_standby_enabled 0
+settings put secure adaptive_sleep 0
+
+# ===== FINAL PERFORMANCE BOOST =====
+# Force All Systems Maximum
+settings put global theater_mode_on 0
+settings put global zen_mode 0
+settings put global app_restriction_enabled false
+settings put global restricted_networking_mode 0
+settings put global device_config_sync_disabled 1
+settings put global enhanced_processing 1
+
+echo "=========================================="
+echo "TECNO CAMON 40 PRO 5G - UNLOCKED!"
+echo "=========================================="
+echo "MediaTek Dimensity 7300 Ultimate: MAX"
+echo "Mali-G615 MC2 GPU: 1047MHz FORCED"
+echo "Display: 144Hz LOCKED"
+echo "FPS Limit: REMOVED"
+echo "Thermal Throttling: DISABLED"
+echo "HiOS Game Space Limits: BYPASSED"
+echo "Performance Profile: MAXIMUM"
+echo "=========================================="
+echo ""
+echo "⚠️  WARNING:"
+echo "- Phone will run HOTTER than normal"
+echo "- Battery drain will be faster"
+echo "- No thermal protection active"
+echo "- Use cooling fan/cooler recommended"
+echo ""
+echo "Toggle Airplane Mode ON/OFF to apply"
+echo "Reboot recommended for full effect"
+echo "=========================================="

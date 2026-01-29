@@ -1,0 +1,286 @@
+#!/bin/bash
+
+# Android 15 Gyroscope & All Sensors Maximum Performance - Zero Delay
+# Force Override All Sensor Limitations
+
+# ===== Gyroscope Maximum Performance =====
+
+# Gyroscope Sampling Rate (Maximum Speed)
+settings put system gyroscope_sampling_rate 1000
+settings put system gyroscope_max_rate 1000
+settings put system gyroscope_min_delay 0
+settings put system sensor_gyroscope_rate 1000
+
+# Disable Gyroscope Power Saving
+settings put system gyroscope_power_save 0
+settings put system gyroscope_batching 0
+settings put system gyroscope_wake_up 1
+
+# Gyroscope Precision & Accuracy
+settings put system gyroscope_precision high
+settings put system gyroscope_resolution 0.001
+settings put system gyroscope_noise_density 0
+
+# ===== Accelerometer Maximum Performance =====
+
+# Accelerometer Sampling Rate
+settings put system accelerometer_sampling_rate 1000
+settings put system accelerometer_max_rate 1000
+settings put system accelerometer_min_delay 0
+settings put system sensor_accelerometer_rate 1000
+
+# Accelerometer Power Override
+settings put system accelerometer_power_save 0
+settings put system accelerometer_batching 0
+settings put system accelerometer_wake_up 1
+
+# Accelerometer Precision
+settings put system accelerometer_resolution 0.001
+settings put system accelerometer_noise_density 0
+
+# ===== Magnetometer (Compass) Maximum Performance =====
+
+# Magnetometer Sampling Rate
+settings put system magnetometer_sampling_rate 1000
+settings put system magnetometer_max_rate 1000
+settings put system magnetometer_min_delay 0
+settings put system sensor_magnetometer_rate 1000
+
+# Magnetometer Power Override
+settings put system magnetometer_power_save 0
+settings put system magnetometer_calibration auto
+
+# ===== Proximity Sensor Maximum Performance =====
+
+# Proximity Instant Response
+settings put system proximity_sensor_delay 0
+settings put system proximity_sensor_rate 1000
+settings put system proximity_on_wake 1
+settings put system proximity_check_timeout 0
+
+# Disable Proximity Power Saving
+settings put system proximity_power_save 0
+
+# ===== Light Sensor Maximum Performance =====
+
+# Light Sensor Instant Response
+settings put system light_sensor_rate 1000
+settings put system light_sensor_delay 0
+settings put system screen_brightness_mode 1
+
+# Auto Brightness Fast Response
+settings put system screen_auto_brightness_adj 1.0
+settings put system auto_brightness_responsiveness fast
+
+# ===== Pressure Sensor (Barometer) Maximum Performance =====
+
+# Pressure Sensor Maximum Rate
+settings put system pressure_sensor_rate 1000
+settings put system pressure_sensor_delay 0
+settings put system barometer_sampling_rate 1000
+
+# ===== Step Counter & Motion Sensors =====
+
+# Step Counter Real-Time
+settings put system step_counter_delay 0
+settings put system step_detector_delay 0
+settings put system significant_motion_delay 0
+
+# Motion Detection Instant
+settings put system motion_sensor_rate 1000
+settings put system gesture_sensor_rate 1000
+
+# ===== Temperature & Humidity Sensors =====
+
+# Temperature Sensor
+settings put system temperature_sensor_rate 1000
+settings put system ambient_temperature_delay 0
+
+# Humidity Sensor
+settings put system humidity_sensor_rate 1000
+settings put system relative_humidity_delay 0
+
+# ===== Hall Sensor (Magnetic) =====
+
+# Hall Sensor Instant Detection
+settings put system hall_sensor_delay 0
+settings put system hall_sensor_rate 1000
+
+# ===== Rotation Vector & Game Rotation =====
+
+# Rotation Vector Maximum Performance
+settings put system rotation_vector_rate 1000
+settings put system rotation_vector_delay 0
+settings put system game_rotation_vector_rate 1000
+settings put system game_rotation_vector_delay 0
+
+# Geomagnetic Rotation
+settings put system geomagnetic_rotation_rate 1000
+settings put system geomagnetic_rotation_delay 0
+
+# ===== Linear Acceleration & Gravity =====
+
+# Linear Acceleration
+settings put system linear_acceleration_rate 1000
+settings put system linear_acceleration_delay 0
+
+# Gravity Sensor
+settings put system gravity_sensor_rate 1000
+settings put system gravity_sensor_delay 0
+
+# ===== Global Sensor System Override =====
+
+# Sensor Framework Maximum Performance
+settings put system sensor_framework_mode performance
+settings put system sensor_hal_mode 1
+settings put system sensor_batching_enabled 0
+settings put system sensor_direct_channel_enabled 1
+
+# Disable All Sensor Delays
+settings put system sensor_default_delay 0
+settings put system sensor_min_delay_us 0
+settings put system sensor_max_delay_us 0
+
+# Sensor Polling Rate Override
+settings put system sensor_polling_rate fastest
+settings put system sensor_event_rate 1000
+
+# ===== Sensor Power Management Override =====
+
+# Disable Sensor Power Saving
+settings put system sensors_power_save_mode 0
+settings put system location_mode_sensors_only 0
+settings put global sensors_off 0
+
+# Sensor Always Active
+settings put system sensor_always_on 1
+settings put system sensor_wake_lock 1
+settings put system sensor_background_enabled 1
+
+# ===== Sensor Calibration Override =====
+
+# Auto Calibration Maximum Speed
+settings put system gyro_calibration_time 0
+settings put system accel_calibration_time 0
+settings put system mag_calibration_time 0
+
+# Force Calibration Quality
+settings put system sensor_calibration_quality high
+settings put system sensor_calibration_enabled 1
+
+# ===== Gaming Sensor Optimization =====
+
+# Game Mode Sensor Priority
+settings put system game_sensor_priority 1
+settings put system gaming_gyro_enabled 1
+settings put system gaming_sensor_boost 1
+
+# Low Latency Sensor Mode
+settings put system sensor_low_latency_mode 1
+settings put system sensor_game_mode 1
+
+# ===== Sensor Fusion & Processing =====
+
+# Sensor Fusion Maximum Performance
+settings put system sensor_fusion_enabled 1
+settings put system sensor_fusion_rate 1000
+settings put system sensor_fusion_delay 0
+
+# Hardware Acceleration
+settings put system sensor_hw_accel 1
+settings put system sensor_use_gpu 1
+
+# ===== Advanced Sensor Tweaks =====
+
+# Sensor Timestamp Accuracy
+settings put system sensor_timestamp_type realtime
+settings put system sensor_sync_enabled 1
+
+# Sensor FIFO Disabled (Zero Buffering)
+settings put system sensor_fifo_enabled 0
+settings put system sensor_fifo_max_event_count 0
+
+# Sensor Thread Priority Maximum
+settings put system sensor_thread_priority -20
+settings put system sensor_process_priority high
+
+# ===== Haptic Feedback Sensor Integration =====
+
+# Haptic Sensor Response
+settings put system haptic_feedback_enabled 1
+settings put system haptic_feedback_intensity 3
+settings put system vibrator_response_time 0
+
+# ===== Touch Sensor Integration =====
+
+# Touch Sensor Zero Delay
+settings put system touch_sensor_delay 0
+settings put system touch_sampling_rate 1000
+settings put system touch_response_time 0
+
+# Multi-touch Sensor Performance
+settings put system multitouch_sensor_rate 1000
+settings put system touchscreen_gesture_delay 0
+
+# ===== Orientation & Position Sensors =====
+
+# Device Orientation Instant Update
+settings put system orientation_sensor_rate 1000
+settings put system orientation_update_delay 0
+
+# Position Tracking
+settings put system position_sensor_rate 1000
+settings put system pose_sensor_delay 0
+
+# ===== Environmental Sensors =====
+
+# All Environmental Sensors Maximum Rate
+settings put system env_sensor_rate 1000
+settings put system ambient_sensor_delay 0
+
+# ===== Biometric Sensors (Fingerprint/Face) =====
+
+# Biometric Sensor Instant Response
+settings put system fingerprint_sensor_delay 0
+settings put system face_unlock_delay 0
+settings put system biometric_response_time 0
+
+# ===== Camera Sensors (For Motion/AR) =====
+
+# Camera Sensor Rate (AR/Motion)
+settings put system camera_sensor_rate 1000
+settings put system camera_motion_detection_delay 0
+
+# ===== Audio Sensors (Mic Array) =====
+
+# Audio Input Sensor Rate
+settings put system audio_sensor_rate 1000
+settings put system microphone_delay 0
+
+# ===== Final Sensor System Override =====
+
+# Sensor Service Maximum Performance
+settings put global sensor_service_enabled 1
+settings put global sensor_privacy_enabled 0
+
+# Disable Sensor Restrictions
+settings put global sensor_notification_enabled 0
+settings put secure sensor_privacy_mode 0
+
+# Force All Sensors Active
+settings put system all_sensors_enabled 1
+settings put system sensor_override_mode performance
+
+# Kernel Sensor Parameters
+settings put system kernel_sensor_boost 1
+settings put system driver_sensor_performance 1
+
+echo "=========================================="
+echo "All Sensors Maximum Performance Applied!"
+echo "Gyroscope: ZERO DELAY - 1000Hz"
+echo "Accelerometer: ZERO DELAY - 1000Hz"
+echo "All Sensor Delays: ELIMINATED"
+echo "Sensor Power Saving: DISABLED"
+echo "Gaming Sensors: OPTIMIZED"
+echo "=========================================="
+echo "Reboot recommended for full effect"

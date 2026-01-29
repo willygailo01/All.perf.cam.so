@@ -1,0 +1,114 @@
+# Disable thermal throttling
+settings put system setprop debug.thermal.throttle.support 0
+settings put global setprop debug.thermal.throttle.support 0
+
+# Disable thermal safety mode
+settings put system setprop debug.thermal_safety_mode 0
+settings put global setprop debug.thermal_safety_mode 0
+
+# Disable thermal limit modes
+settings put system setprop debug.thermal_limit_mode 0
+settings put system setprop debug.thermal_limit_override 1
+settings put global setprop debug.thermal_limit_mode 0
+settings put global setprop debug.thermal_limit_override 1
+
+# Maximize FPS (remove thermal restrictions)
+settings put system setprop debug.fps.switch.thermal 0
+settings put system setprop debug.thermal_fps_limit 999
+settings put global setprop debug.fps.switch.thermal 0
+settings put global setprop debug.thermal_fps_limit 999
+
+# Disable display thermal dimming
+settings put system setprop debug.hwc_thermal_dimming 0
+settings put global setprop debug.hwc_thermal_dimming 0
+
+# Set thermal limits to maximum
+settings put system setprop debug.thermal_limit_refresh_rate 999
+settings put global setprop debug.thermal_limit_refresh_rate 999
+
+# Disable virtual thermal zones
+settings put system setprop debug.virtual_thermal_thermal_zone 0
+settings put global setprop debug.virtual_thermal_thermal_zone 0
+
+# Force maximum performance mode
+settings put system setprop debug.perf_mode 3
+settings put system setprop debug.perf_topapp 1
+settings put global setprop debug.perf_mode 3
+settings put global setprop debug.perf_topapp 1
+
+# Additional performance settings
+settings put global setprop debug.window_animation_scale 0
+settings put global setprop debug.transition_animation_scale 0
+settings put global setprop debug.animator_duration_scale 0
+settings put system setprop debug.peak_refresh_rate 144
+settings put system setprop debug.min_refresh_rate 144
+settings put system setprop persist.sys.thermal.enable 0
+settings put system setprop persist.thermal.enable 0
+settings put system setprop persist.vendor.thermal.enable 0
+settings put system setprop sys.thermal.enable 0
+settings put system setprop vendor.thermal.enable 0
+settings put system setprop debug.thermal.disable 1
+settings put system setprop persist.vendor.mtk.thermal.enable 0
+settings put system setprop persist.sys.mtk_thermal_enable 0
+settings put system setprop vendor.mtk.thermal.manager.enable 0
+settings put system setprop persist.debug.sf.disable_thermal 1
+settings put system setprop debug.stop thermal-engine
+settings put system setprop debug.stop vendor.thermal-hal-1-0
+settings put system setprop debug.stop vendor.thermal-hal-2-0
+settings put system setprop debug.stop thermalservice
+settings put system setprop debug.stop mi_thermald
+settings put system setprop debug.stop thermal_manager
+settings put system setprop debug.stop thermal-hal-2-0
+settings put system setprop debug.ctl.stop thermal-engine
+settings put system setprop debug.ctl.stop vendor.thermal-hal-2-0
+settings put system setprop persist.vendor.mtk.thermal.enable 0
+settings put system setprop vendor.mtk.thermal.manager.enable 0
+settings put system setprop persist.sys.mtk_thermal_enable 0
+settings put system setprop persist.vendor.qti.thermal.enable 0
+settings put system setprop vendor.qti.thermal.limit 0
+settings put system setprop persist.thermal.qpnp.enable 0
+settings put system setprop persist.vendor.sec.thermal.enable 0
+settings put system setprop vendor.sec.thermal.enable 0
+settings put system setprop persist.vendor.google.thermal.enable 0
+settings put system setprop vendor.google.thermal.mitigation 0
+settings put system setprop persist.vendor.hisi.thermal.enable 0
+settings put system setprop vendor.hisi.thermal.enable 0
+settings put system setprop persist.sys.thermal.enable 0
+settings put system setprop debug.thermal_throttling 0
+settings put system setprop debug.thermal_pwrlevel 0
+settings put system setprop debug.thermal_throttling 0
+settings put system setprop debug.thermal_pwrlevel 0
+settings put system setprop debug.thermal_core 0
+settings put system setprop debug.thermald 0
+settings put system setprop debug.mi_thermald 0
+settings put system setprop debug.persist.sys.thermal.enable 0
+settings put system setprop debug.persist.vendor.thermal.mode 0
+settings put system setprop debug.sys.thermal.limit.enabled 0
+settings put system setprop setprop debug.persist.sys.cpu.governor performance
+settings put system setprop debug.thermal_zone0_mode 0
+settings put system setprop debug.thermal_zone1_mode 0
+settings put system setprop debug.debuggable 1
+settings put system setprop debug.init.svc.thermal stopped
+settings put system setprop debug.init.svc.thermal_manager stopped
+settings put system setprop debug.init.svc.thermald stopped
+settings put system setprop debug.init.svc.thermalloadalgod stopped
+settings put system setprop debug.svc.thermal stopped
+settings put system setprop debug.svc.thermal_manager stopped
+settings put system setprop debug.svc.thermald stopped
+settings put system setprop debug.svc.thermalloadalgod stopped
+settings put system setprop debug.sys.shutdown_state 6
+
+cmd device_config put hardware_properties_manager battery_shutdown_temperatures 500.0
+cmd device_config put hardware_properties_manager battery_throttling_temperatures 500.0
+cmd device_config put hardware_properties_manager cpu_shutdown_temperatures 5000.0
+cmd device_config put hardware_properties_manager cpu_throttling_temperatures 500.0
+cmd device_config put hardware_properties_manager gpu_shutdown_temperatures 500.0
+cmd device_config put hardware_properties_manager gpu_throttling_temperatures 500.0
+
+
+
+
+
+
+
+

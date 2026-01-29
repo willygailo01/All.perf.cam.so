@@ -1,0 +1,220 @@
+#!/system/bin/sh
+
+# ============================================
+# ULTIMATE MAX PERFORMANCE SCRIPT
+# 144Hz/144FPS - MAX CPU/GPU - NO LIMITS
+# ============================================
+
+# ============================================
+# CPU MAXIMUM PERFORMANCE
+# ============================================
+
+# CPU Boost & Performance
+settings put system debug.performance.tuning 1
+settings put system persist.sys.perf.topAppRenderThreadBoost.enable true
+settings put system debug.cpurend.vsync false
+settings put system persist.sys.perf.cached_packages.support false
+settings put system put system persist.sys.perf.pre_start_app.support false
+settings put system ro.mtk_perf_fast_start_win 1
+settings put system ro.mtk_perf_response_time 1
+settings put system ro.mtk_perf_simple_start_win 1
+settings put system sys.trancare.performance 1
+settings put system sys.trancare.performance.latency 0
+settings put system ro.transsion.cpubooster.group 1
+settings put system ro.transsion.cpubooster.heavy_loading.support 1
+settings put system ro.fingerprint_wakeup_performance_opt 1
+settings put system sys.init.perf_lsm_hooks 1
+settings put system security.perf_harden 0
+settings put system debug.performance.tuning 1
+settings put system  sys.trancare.performance 1
+settings put system  sys.trancare.performance.latency 1
+
+# ============================================
+# 144Hz/144FPS DISPLAY SETTINGS
+# ============================================
+
+# Max Refresh Rate 144Hz
+settings put system debug.sf.frame_rate_multiple_threshold 0
+settings put system debug.sf.latch_unsignaled 1
+settings put system debug.sf.disable_backpressure 1
+settings put system debug.sf.early_phase_offset_ns 0
+settings put system debug.sf.early_app_phase_offset_ns 0
+settings put system debug.sf.early_gl_phase_offset_ns 0
+settings put system debug.sf.early_gl_app_phase_offset_ns 0
+settings put system debug.sf.phase_offset_threshold_for_next_vsync_ns 0
+settings put system debug.sf.enable_hwc_vds 0
+settings put system debug.sf.recomputecrop 0
+settings put system debug.sf.gpu_comp_strategy 0
+settings put system debug.sf.enable_gl_backpressure 0
+settings put system debug.sf.disable_client_composition_cache 1
+settings put system debug.sf.predict_hwc_composition_strategy 0
+
+# Force 144Hz
+settings put system ro.surface_flinger.max_frame_buffer_acquired_buffers 3
+settings put system ro.surface_flinger.running_without_sync_framework true
+settings put system ro.surface_flinger.use_smart_90_for_video false
+settings put system ro.surface_flinger.set_display_power_timer_ms 0
+settings put system ro.surface_flinger.set_idle_timer_ms 0
+settings put system ro.surface_flinger.set_touch_timer_ms 0
+settings put system ro.surface_flinger.use_content_detection_for_refresh_rate false
+settings put system ro.surface_flinger.force_hwc_copy_for_virtual_displays true
+settings put system ro.surface_flinger.max_virtual_display_dimension 4096
+settings put system ro.surface_flinger.protected_contents true
+settings put system ro.surface_flinger.vsync_event_phase_offset_ns 0
+settings put system ro.surface_flinger.vsync_sf_event_phase_offset_ns 0
+
+# ============================================
+# THERMAL THROTTLING - COMPLETE DISABLE
+# ============================================
+
+settings put system persist.sys.thermal.disable 1
+settings put system debug.thermal.throttle.support no
+settings put system persist.vendor.powerhal.thermal_ux_support 0
+settings put system persist.vendor.powerhal.thermal_ux_temp_max 999999
+settings put system persist.vendor.powerhal.thermal_ux_temp_min 0
+settings put system ro.esports.thermal_config.support 0
+settings put system ro.esports.thermal_config.version 0
+settings put system ro.tran_thermal_cc_support 0
+settings put system ro.vendor.tran.hbm.thermal.temp.clr 999999
+settings put system ro.vendor.tran.hbm.thermal.temp.trig 999999
+settings put system dalvik.vm.dexopt.thermal-cutoff 999
+
+# ============================================
+# GPU MAXIMUM PERFORMANCE
+# ============================================
+
+settings put system debug.sf.hw 1
+settings put system debug.egl.hw 1
+settings put system debug.composition.type gpu
+settings put system debug.hwui.render_dirty_regions false
+settings put system persist.device_config.aconfig_flags.game.android.os.adpf_hwui_gpu false
+settings put system graphics.gpu.profiler.support true
+settings put system debug.hwui.skia_use_perfetto_track_events false
+settings put system debug.renderengine.skia_use_perfetto_track_events false
+settings put system debug.hwui.renderer skiagl
+settings put system debug.hwui.use_buffer_age false
+settings put system debug.hwui.filter_test_overhead false
+settings put system debug.hwui.use_partial_updates false
+settings put system debug.hwui.use_gpu_pixel_buffers false
+settings put system debug.egl.profiler 0
+settings put system debug.egl.trace 0
+settings put system debug.enable.sglscale 1
+settings put system debug.gralloc.enable_fb_ubwc 1
+settings put system debug.gralloc.gfx_ubwc_disable 0
+
+# OpenGL & Vulkan
+settings put system debug.hwui.use_hint_manager false
+settings put system debug.renderengine.backend skiaglthreaded
+settings put system ro.opengles.version 196610
+settings put system ro.hardware.vulkan mali
+
+# ============================================
+# BATTERY & POWER - FULL DISABLE
+# ============================================
+
+settings put system persist.sys.battery_saver 0
+settings put system persist.device_config.aconfig_flags.runtime_native_boot.iorap_perfetto_enable false
+settings put system persist.traced_perf.enable false
+settings put system persist.vendor.aee.perfetto 0
+settings put system persist.vendor.aeev.perfetto 0
+settings put system persist.sys.perf.force_all_apps_standby false
+settings put system debug.perfetto.sdk_sysprop_guard_generation 0
+
+# ============================================
+# DALVIK VM MAXIMUM
+# ============================================
+
+settings put system dalvik.vm.heapsize 768m
+settings put system dalvik.vm.heapgrowthlimit 384m
+settings put system dalvik.vm.heapstartsize 32m
+settings put system dalvik.vm.heaptargetutilization 0.9
+settings put system dalvik.vm.heapminfree 8m
+settings put system dalvik.vm.heapmaxfree 16m
+settings put system dalvik.vm.dex2oat-threads 8
+settings put system dalvik.vm.boot-dex2oat-threads 8
+settings put system dalvik.vm.dex2oat-cpu-set 0,1,2,3,4,5,6,7
+settings put system dalvik.vm.image-dex2oat-threads 8
+settings put system dalvik.vm.image-dex2oat-cpu-set 0,1,2,3,4,5,6,7
+settings put system dalvik.vm.dex2oat-filter speed
+settings put system dalvik.vm.image-dex2oat-filter speed
+
+# ============================================
+# SETTINGS - 144Hz DISPLAY
+# ============================================
+
+# Force 144Hz Refresh Rate
+settings put system peak_refresh_rate 144
+settings put system min_refresh_rate 144
+settings put system user_refresh_rate 144
+settings put secure refresh_rate_mode 0
+
+# Performance Mode
+settings put system performance_mode 1
+settings put system cpu_boost_enabled 1
+settings put system gpu_boost_enabled 1
+settings put system gpu_max_performance 1
+settings put system thermal_limit_enabled 0
+settings put system force_high_performance 1
+
+# Display Settings
+settings put system screen_brightness_mode 0
+settings put system screen_brightness 255
+settings put system screen_off_timeout 600000
+settings put system pointer_speed 7
+settings put system accelerometer_rotation 0
+
+# Animation Speed (0 = off, 0.5 = fast, 1 = normal)
+settings put system animator_duration_scale 0
+settings put system transition_animation_scale 0
+settings put system window_animation_scale 0
+
+# ============================================
+# GLOBAL SETTINGS
+# ============================================
+
+settings put global device_performance_mode 1
+settings put global thermal_throttle_enabled 0
+settings put global low_power 0
+settings put global battery_saver_enabled 0
+settings put global app_standby_enabled 0
+settings put global forced_app_standby_enabled 0
+settings put global adaptive_battery_management_enabled 0
+settings put global automatic_power_save_mode 0
+settings put global dynamic_power_savings_enabled 0
+settings put global low_power_standby_enabled 0
+settings put global development_settings_enabled 1
+settings put global stay_on_while_plugged_in 7
+settings put global animator_duration_scale 0
+settings put global transition_animation_scale 0
+settings put global window_animation_scale 0
+
+# Doze Disable
+settings put global device_idle_constants "inactive_to=0,sensing_to=0,locating_to=0,motion_inactive_to=0,idle_after_inactive_to=0,idle_pending_to=0,max_idle_pending_to=0,idle_to=0,max_idle_to=0,min_time_to_alarm=0"
+
+# ============================================
+# SECURE SETTINGS
+# ============================================
+
+settings put secure game_driver_all_apps 1
+settings put secure location_mode 0
+settings put secure send_action_app_error 0
+settings put secure anr_show_background 0
+settings put secure long_press_timeout 100
+
+
+echo "================================================"
+echo "  MAX PERFORMANCE MODE - 144Hz/144FPS ENABLED  "
+echo "================================================"
+echo "✓ CPU: MAX Performance (All Cores)"
+echo "✓ GPU: MAX Performance (Mali)"
+echo "✓ Display: 144Hz Forced"
+echo "✓ FPS Target: 144 FPS"
+echo "✓ Thermal: DISABLED"
+echo "✓ Battery Saver: DISABLED"
+echo "✓ Animations: DISABLED"
+echo "✓ I/O Scheduler: Deadline"
+echo "✓ VM Swappiness: 0"
+echo "✓ Doze Mode: DISABLED"
+echo "================================================"
+echo "   REBOOT RECOMMENDED FOR FULL EFFECT"
+echo "================================================"

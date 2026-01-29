@@ -1,0 +1,790 @@
+#!/system/bin/sh
+
+echo "=========================================="
+echo "Max Android Performance Optimizer"
+echo "Complete Settings Database Configuration"
+echo "=========================================="
+
+# Wait for system to stabilize
+sleep 30
+
+# ============================================
+# DALVIK VM SETTINGS (Complete)
+# ============================================
+echo "Configuring Dalvik VM..."
+settings put system ro.dalvik.vm.enable_uffd_gc true
+settings put system ro.zygote zygote64
+settings put system dalvik.vm.isa.arm64.variant cortex-a55
+settings put system dalvik.vm.isa.arm64.features default
+settings put system dalvik.vm.dexopt.secondary true
+settings put system dalvik.vm.dexopt.thermal-cutoff 0
+settings put system dalvik.vm.usejit true
+settings put system dalvik.vm.madvise.artfile.size 4294967295
+settings put system dalvik.vm.madvise.odexfile.size 104857600
+settings put system dalvik.vm.madvise.vdexfile.size 104857600
+settings put system dalvik.vm.heapsize 768m
+settings put system dalvik.vm.dex2oat64.enabled true
+settings put system dalvik.vm.dex2oat-Xms 128m
+settings put system dalvik.vm.dex2oat-Xmx 768m
+settings put system dalvik.vm.heapmaxfree 32m
+settings put system dalvik.vm.heapminfree 2m
+settings put system dalvik.vm.heapstartsize 16m
+settings put system dalvik.vm.minidebuginfo false
+settings put system dalvik.vm.useartservice true
+settings put system dalvik.vm.appimageformat lz4
+settings put system dalvik.vm.heapgrowthlimit 384m
+settings put system dalvik.vm.enable_pr_dexopt true
+settings put system dalvik.vm.image-dex2oat-Xms 128m
+settings put system dalvik.vm.image-dex2oat-Xmx 768m
+settings put system dalvik.vm.usap_pool_enabled true
+settings put system dalvik.vm.usap_pool_size_max 5
+settings put system dalvik.vm.usap_pool_size_min 2
+settings put system dalvik.vm.finalizer-timeout-ms 20000
+settings put system dalvik.vm.mtk-stack-trace-file /data/anr/mtk_traces.txt
+settings put system dalvik.vm.ps-min-first-save-ms 50000
+settings put system dalvik.vm.dex2oat-minidebuginfo false
+settings put system dalvik.vm.heaptargetutilization 0.9
+settings put system dalvik.vm.usap_refill_threshold 2
+settings put system dalvik.vm.usap_pool_refill_delay_ms 1000
+settings put system dalvik.vm.dex2oat-max-image-block-size 1048576
+settings put system dalvik.vm.dex2oat-resolve-startup-strings true
+settings put system persist.sys.dalvik.vm.lib.2 libart.so
+
+# ============================================
+# SURFACEFLINGER SETTINGS (Complete)
+# ============================================
+echo "Configuring SurfaceFlinger..."
+settings put system debug.sf.hw 1
+settings put system debug.sf.hwc.min.duration 6944444
+settings put system debug.sf.late.sf.duration 6944444
+settings put system debug.sf.early.sf.duration 6944444
+settings put system debug.sf.early.app.duration 6944444
+settings put system debug.sf.earlyGl.sf.duration 6944444
+settings put system debug.sf.earlyGl.app.duration 6944444
+settings put system debug.sf.enable_gl_backpressure 0
+settings put system debug.sf.latch_unsignaled 1
+settings put system debug.sf.disable_backpressure 1
+settings put system debug.sf.enable_hwc_vds 1
+settings put system debug.sf.recomputecrop 0
+settings put system debug.sf.gpu_comp_tiling 1
+settings put system debug.sf.enable_transaction_tracing false
+settings put system debug.sf.predict 1
+settings put system debug.sf.nobootanimation 0
+settings put system debug.sf.frame_rate_multiple_threshold 144
+
+# ============================================
+# HWUI SETTINGS (Complete)
+# ============================================
+echo "Configuring HWUI..."
+settings put system debug.hwui.renderer skiagl
+settings put system debug.hwui.force_dark false
+settings put system debug.hwui.disable_vsync true
+settings put system debug.hwui.use_buffer_age false
+settings put system debug.hwui.filter_test_overhead false
+settings put system debug.hwui.skia_tracing_enabled false
+settings put system debug.hwui.target_cpu_time_percent 100
+settings put system debug.hwui.skia_use_perfetto_track_events false
+settings put system debug.hwui.profile true
+settings put system debug.hwui.show_dirty_regions false
+settings put system debug.hwui.skip_empty_damage false
+settings put system debug.hwui.use_partial_updates false
+settings put system debug.hwui.use_gpu_pixel_buffers true
+
+# ============================================
+# EGL & GPU SETTINGS (Complete)
+# ============================================
+echo "Configuring EGL & GPU..."
+settings put system debug.egl.hw 1
+settings put system debug.egl.profiler 0
+settings put system debug.egl.swapinterval 0
+settings put system debug.mali.fps 144
+settings put system debug.mali.max_fps 144
+settings put system debug.mali.target_fps 144
+
+# ============================================
+# INPUT & LOGGING SETTINGS (Complete)
+# ============================================
+echo "Configuring Input & Logging..."
+settings put system debug.input.log 0
+settings put system debug.atrace.tags.enableflags 0
+
+# ============================================
+# VENDOR & CAMERA SETTINGS (Complete)
+# ============================================
+echo "Configuring Vendor Settings..."
+settings put system debug.vendor.sys.oobe.camera_skin brown
+settings put system debug.vendor.sys.camera_country PH
+settings put system debug.vendor.sys.country_for_cam PH
+settings put system debug.vendor.sys.cameraserver_inuse null
+
+# ============================================
+# THERMAL & POWER SETTINGS (Complete)
+# ============================================
+echo "Configuring Thermal & Power..."
+settings put system debug.thermal.throttle.support no
+
+# ============================================
+# TRACING SETTINGS (Complete)
+# ============================================
+echo "Configuring Tracing..."
+settings put system debug.tracing.mcc 515
+settings put system debug.tracing.mnc 3
+settings put system debug.tracing.plug_type 0
+settings put system debug.tracing.device_state 0:DEFAULT
+settings put system debug.tracing.screen_brightness 1.0
+
+# ============================================
+# FEEDBACK SETTINGS (Complete)
+# ============================================
+echo "Configuring Feedback..."
+settings put system debug.feedback.log.capture 0
+settings put system debug.feedback.taglog.time 0
+settings put system debug.feedback.bugreport 0
+settings put system debug.feedback.bugreport.copy 0
+
+# ============================================
+# GRAPHICS & GAME SETTINGS (Complete)
+# ============================================
+echo "Configuring Graphics & Game..."
+settings put system debug.graphics.game_default_frame_rate.disabled false
+settings put system debug.graphics.game_default_frame_rate 144
+settings put system debug.mediatek.disp_decompress 1
+settings put system debug.mediatek.appgamepq_compress 1
+settings put system debug.perfetto.sdk_sysprop_guard_generation 0
+settings put system debug.force_rtl false
+settings put system debug.mtk_tflite.target_nnapi 34
+settings put system debug.composition.type gpu
+settings put system debug.performance.tuning 1
+settings put system debug.stagefright.c2inputsurface 0
+
+# ============================================
+# RENDERENGINE SETTINGS (Complete)
+# ============================================
+echo "Configuring RenderEngine..."
+settings put system debug.renderengine.backend skiaglthreaded
+settings put system debug.renderengine.skia_tracing_enabled false
+settings put system debug.renderengine.skia_use_perfetto_track_events false
+
+# ============================================
+# CHOREOGRAPHER SETTINGS (Complete)
+# ============================================
+echo "Configuring Choreographer..."
+settings put system debug.choreographer.vsync 6944444
+settings put system debug.choreographer.skipwarning 100
+
+# ============================================
+# GPU & RENDERING LIMITS (Complete)
+# ============================================
+echo "Configuring GPU Limits..."
+settings put system debug.gpuframelimit 144
+settings put system debug.cpurend.vsync false
+
+# ============================================
+# UI & OVERLAY SETTINGS (Complete)
+# ============================================
+echo "Configuring UI & Overlay..."
+settings put system debug.enabletr true
+settings put system debug.overlayui.enable 1
+settings put system debug.qctwa.statusbar 1
+settings put system debug.qctwa.preservebuf 1
+
+# ============================================
+# GRALLOC SETTINGS (Complete)
+# ============================================
+echo "Configuring Gralloc..."
+settings put system debug.gralloc.gfx_ubwc_disable 0
+settings put system debug.gralloc.enable_fb_ubwc 1
+settings put system debug.mdpcomp.logs 0
+
+# ============================================
+# PERFORMANCE TUNING (Complete)
+# ============================================
+echo "Configuring Performance..."
+settings put system debug.performance.tuning.enable 1
+
+# ============================================
+# OS SETTINGS (Complete)
+# ============================================
+echo "Configuring OS Settings..."
+settings put system os.eye.protect.mode 0
+settings put system os.notch.support 2
+settings put system os.charging_animation_type 45
+settings put system os.keyguard_fixed_dual_clock 1
+settings put system os.charging_animation_wire_power 0
+settings put system os.charging_animation_wireless_power 0
+
+# ============================================
+# RO (READ-ONLY) SETTINGS (Complete)
+# ============================================
+echo "Configuring RO Settings..."
+settings put system ro.os.aam.path /tr_product/etc/transsion_prebuilt/aam_config.json
+settings put system ro.os.caller.incoming.ringtone 1
+settings put system ro.os.recent.blur 0
+settings put system ro.camera.sound.forced 0
+settings put system ro.custom.camera.rear.setting "50M OIS+8M"
+settings put system ro.custom.camera.front.setting 50M
+settings put system ro.faceid.hal.support 1
+settings put system ro.faceid.applock.unsupport 1
+settings put system ro.faceid.support 1
+settings put system ro.faceid.version 2
+settings put system ro.faceid.low_battery_light 0
+settings put system ro.iorapd.enable false
+settings put system ro.kernel.zio "38,108,105,16"
+settings put system ro.product.freeze.gc.support 0
+settings put system ro.product.locale en-US
+settings put system ro.product.product.tran.device.name.default "TECNO CAMON 40 Pro 5G"
+settings put system ro.product.tr_theme.name TSSI
+settings put system ro.product.tr_theme.brand TRANSSION
+settings put system ro.product.tr_theme.device COMMON
+settings put system ro.product.tr_theme.manufacturer TRANSSION
+settings put system ro.product.trantabe.apr.support 1
+settings put system ro.product.trantabe.dexfix.support 1
+settings put system ro.product.trantabe.install.support 1
+settings put system ro.product.trantabe.support 1
+settings put system ro.pc_connection_support 1
+settings put system ro.tran_game_ims_support 0
+settings put system ro.tran_telecom_security.support 1
+settings put system ro.tran_vibrate_ontouch2.0.support 0
+settings put system ro.tran_vsim_tne_support 1
+settings put system ro.mtk_perf_response_time 1
+settings put system ro.os_charge_display_type 1
+settings put system ro.os_globalguide_support 1
+settings put system ro.os_inadvertent_support 1
+settings put system ro.tran_90hz_refresh_rate.not_support 0
+settings put system ro.tran_144hz_refresh_rate.support 1
+settings put system ro.tran_anti_rpmb_support 1
+settings put system ro.tran_anti_spec_support 3
+settings put system ro.tran_cam_portrait_arch 1
+settings put system ro.tran_palm_find_support 1
+settings put system ro.tran_sms_retry_support 0
+settings put system ro.tran_stk_mpesa_support 1
+settings put system ro.app_lock_sr_ps_0004_001.support 1
+settings put system ro.launcher_smartwidget_15.1.0_features.support 1
+settings put system ro.tran_low_storage_support 0
+settings put system ro.tran_mms_timeout_support 0
+settings put system ro.tran_smart_5g_gt_support 1
+settings put system ro.tran_travel_mode_support 1
+settings put system ro.tran_wlan_assistant_cell.support 1
+settings put system ro.tranos_audiomode_support 1
+settings put system ro.tranos_pedometer_support 0
+settings put system ro.mtk_perf_simple_start_win 1
+settings put system ro.mtk_perf_fast_start_win 1
+settings put system ro.os_anti_addiction_support 0
+settings put system ro.os_game_anti_interference.support 1
+settings put system ro.os_gesture_answer_support 1
+settings put system ro.os_lockscreen_pop_support 1
+settings put system ro.os_note_fans_link_support 0
+settings put system ro.os_note_sunia_pen_support 0
+settings put system ro.os_screen_buttons_support 1
+settings put system ro.rlk_multi_gsensor_support 1
+settings put system ro.tran_anti_monitor_support 0
+settings put system ro.tran_app_brightness_limit.support 0
+settings put system ro.tran_chooser_rank_support 1
+settings put system ro.tran_default_refresh_mode 14400
+settings put system ro.tran_high_brightness_mode.support 1
+settings put system ro.tran_lift_wake_up_support 0
+settings put system ro.tran_cam_flashsnap_support 1
+settings put system ro.tran_crack_monitor_support 0
+settings put system ro.tran_demophone_sim_support 0
+settings put system ro.tran_google_dialer_support 0
+settings put system ro.tran_power_metrics_support 0
+settings put system ro.tran_remove_format_private.support 1
+settings put system ro.tran_ups_datastall_support 1
+settings put system ro.tran_viration_time_support 0
+settings put system ro.tranos_fingerprint_support 1
+settings put system ro.tranos_onehandmode_support 1
+settings put system ro.tran_chat_icon_show_support 0
+settings put system ro.tran_garbage_paging_support 0
+settings put system ro.tran_gotii_entrance_support 1
+settings put system ro.tran_mic_mute_check_support 1
+settings put system ro.tran_pt_remote_lock_support 1
+settings put system ro.tran_reduce_noise_switch_dl 0
+settings put system ro.tran_reduce_noise_switch_on 0
+settings put system ro.tran_security_input_support 1
+settings put system ro.tran_split_screen_snap_mode.support 1
+settings put system ro.tran_ultra_power_v2_support 0
+
+# ============================================
+# PERSIST DEVICE CONFIG FLAGS - GAME (Complete)
+# ============================================
+echo "Configuring Game Flags..."
+settings put global persist.device_config.aconfig_flags.game.android.os.adpf_hwui_gpu true
+settings put global persist.device_config.aconfig_flags.game.android.os.adpf_prefer_power_efficiency false
+settings put global persist.device_config.aconfig_flags.game.android.os.adpf_platform_power_efficiency false
+
+# ============================================
+# PERSIST DEVICE CONFIG FLAGS - INPUT (Complete)
+# ============================================
+echo "Configuring Input Flags..."
+settings put global persist.device_config.aconfig_flags.input.com.android.input.flags.enable_input_event_tracing false
+settings put global persist.device_config.aconfig_flags.input.filtered_accel_event_rate_hz 240
+settings put global persist.device_config.aconfig_flags.input.default_key_press_repeat_rate 16
+settings put global persist.device_config.aconfig_flags.input.touch_screen_sample_interval_ms 4
+
+# ============================================
+# PERSIST DEVICE CONFIG FLAGS - NEARBY (Complete)
+# ============================================
+echo "Configuring Nearby Flags..."
+settings put global persist.device_config.aconfig_flags.nearby.nearby_support_test_app false
+settings put global persist.device_config.aconfig_flags.nearby.nearby_nano_app_min_version 1
+settings put global persist.device_config.aconfig_flags.nearby.nearby_enable_presence_broadcast_legacy false
+
+# ============================================
+# PERSIST DEVICE CONFIG FLAGS - SENSORS (Complete)
+# ============================================
+echo "Configuring Sensor Flags..."
+settings put global persist.device_config.aconfig_flags.sensors.com.android.hardware.libsensor.flags.sensor_event_queue_report_sensor_usage_in_tracing false
+
+# ============================================
+# PERSIST DEVICE CONFIG FLAGS - BLUETOOTH (Complete)
+# ============================================
+echo "Configuring Bluetooth Flags..."
+settings put global persist.device_config.aconfig_flags.bluetooth.scan_timeout_millis 300000
+settings put global persist.device_config.aconfig_flags.bluetooth.location_denylist_mac ""
+settings put global persist.device_config.aconfig_flags.bluetooth.audio_policy_ag_enabled true
+settings put global persist.device_config.aconfig_flags.bluetooth.audio_policy_hf_enabled true
+settings put global persist.device_config.aconfig_flags.bluetooth.le_audio_enabled_by_default false
+settings put global persist.device_config.aconfig_flags.bluetooth.INIT_gd_hal_snoop_logger_socket false
+settings put global persist.device_config.aconfig_flags.bluetooth.INIT_gd_hal_snoop_logger_filtering false
+
+# ============================================
+# PERSIST SYS SETTINGS (Complete)
+# ============================================
+echo "Configuring Persist Sys..."
+settings put system persist.sys.sf.color_saturation 1.1
+settings put system persist.sys.sf.native_mode 2
+settings put system persist.sys.sf.disable_triple_buffer 0
+settings put system persist.sys.ui.hw 1
+settings put system persist.sys.scrollingcache 3
+settings put system persist.sys.purgeable_assets 1
+settings put system persist.sys.use_16bpp_alpha 1
+settings put system persist.sys.use_dithering 0
+settings put system persist.sys.thermal.enable 0
+settings put system persist.vendor.qti.games.gt.prof 1
+
+# ============================================
+# GAME SETTINGS (Complete)
+# ============================================
+echo "Configuring Game Settings..."
+settings put system debug.game.7gen true
+settings put system debug.game.mode 2
+settings put system debug.game.video.support 1
+settings put system debug.game.video.speed 1
+
+# ============================================
+# MISC DEBUG SETTINGS (Complete)
+# ============================================
+echo "Configuring Misc Debug..."
+settings put system debug.disable.hwacc 0
+settings put system debug.kill_allocating_task 0
+
+# ============================================
+# SQLITE SETTINGS (Complete)
+# ============================================
+echo "Configuring SQLite..."
+settings put system debug.sqlite.journalmode OFF
+settings put system debug.sqlite.syncmode 0
+settings put system debug.sqlite.wal.syncmode 0
+
+# ============================================
+# VIDEO & HARDWARE SETTINGS (Complete)
+# ============================================
+echo "Configuring Video & Hardware..."
+settings put system video.accelerate.hw 1
+settings put system windowsmgr.max_events_per_sec 300
+
+# ============================================
+# RO CONFIG SETTINGS (Complete)
+# ============================================
+echo "Configuring RO Config..."
+settings put system ro.config.hw_quickpoweron true
+settings put system ro.config.enable.hw_accel true
+settings put system ro.product.gpu.driver 1
+settings put system ro.fb.mode 1
+settings put system ro.sf.lcd_density 480
+settings put system ro.kernel.android.checkjni 0
+settings put system ro.kernel.checkjni 0
+settings put system ro.config.nocheckin 1
+settings put system ro.telephony.call_ring.delay 0
+
+# ============================================
+# LMK (LOW MEMORY KILLER) SETTINGS (Complete)
+# ============================================
+echo "Configuring Low Memory Killer..."
+settings put system ro.lmk.critical_upgrade false
+settings put system ro.lmk.upgrade_pressure 40
+settings put system ro.lmk.downgrade_pressure 60
+settings put system ro.lmk.kill_heaviest_task true
+settings put system ro.lmk.kill_timeout_ms 100
+
+# ============================================
+# VENDOR QTI SETTINGS (Complete)
+# ============================================
+echo "Configuring Vendor QTI..."
+settings put system ro.vendor.qti.sys.fw.bservice_enable true
+settings put system ro.vendor.qti.sys.fw.bservice_limit 60
+settings put system ro.vendor.qti.sys.fw.bservice_age 5000
+settings put system ro.vendor.at_library libqti-at.so
+settings put system ro.vendor.gt_library libqti-gt.so
+
+# ============================================
+# SYS SETTINGS (Complete)
+# ============================================
+echo "Configuring Sys..."
+settings put system sys.use_fifo_ui 1
+settings put system sys.games.gt.prof 1
+
+# ============================================
+# APPLY SETPROP (Immediate Effect - Complete)
+# ============================================
+echo "Applying setprop for immediate effect..."
+
+setprop ro.dalvik.vm.enable_uffd_gc true
+setprop ro.zygote zygote64
+setprop dalvik.vm.isa.arm64.variant cortex-a55
+setprop dalvik.vm.isa.arm64.features default
+setprop dalvik.vm.dexopt.secondary true
+setprop dalvik.vm.dexopt.thermal-cutoff 0
+setprop dalvik.vm.usejit true
+setprop dalvik.vm.madvise.artfile.size 4294967295
+setprop dalvik.vm.madvise.odexfile.size 104857600
+setprop dalvik.vm.madvise.vdexfile.size 104857600
+setprop dalvik.vm.heapsize 768m
+setprop dalvik.vm.dex2oat64.enabled true
+setprop dalvik.vm.dex2oat-Xms 128m
+setprop dalvik.vm.dex2oat-Xmx 768m
+setprop dalvik.vm.heapmaxfree 32m
+setprop dalvik.vm.heapminfree 2m
+setprop dalvik.vm.heapstartsize 16m
+setprop dalvik.vm.minidebuginfo false
+setprop dalvik.vm.useartservice true
+setprop dalvik.vm.appimageformat lz4
+setprop dalvik.vm.heapgrowthlimit 384m
+setprop dalvik.vm.enable_pr_dexopt true
+setprop dalvik.vm.image-dex2oat-Xms 128m
+setprop dalvik.vm.image-dex2oat-Xmx 768m
+setprop dalvik.vm.usap_pool_enabled true
+setprop dalvik.vm.usap_pool_size_max 5
+setprop dalvik.vm.usap_pool_size_min 2
+setprop dalvik.vm.finalizer-timeout-ms 20000
+setprop dalvik.vm.mtk-stack-trace-file /data/anr/mtk_traces.txt
+setprop dalvik.vm.ps-min-first-save-ms 50000
+setprop dalvik.vm.dex2oat-minidebuginfo false
+setprop dalvik.vm.heaptargetutilization 0.9
+setprop dalvik.vm.usap_refill_threshold 2
+setprop dalvik.vm.usap_pool_refill_delay_ms 1000
+setprop dalvik.vm.dex2oat-max-image-block-size 1048576
+setprop dalvik.vm.dex2oat-resolve-startup-strings true
+setprop persist.sys.dalvik.vm.lib.2 libart.so
+setprop debug.sf.hw 1
+setprop debug.sf.hwc.min.duration 6944444
+setprop debug.sf.late.sf.duration 6944444
+setprop debug.sf.early.sf.duration 6944444
+setprop debug.sf.early.app.duration 6944444
+setprop debug.sf.earlyGl.sf.duration 6944444
+setprop debug.sf.earlyGl.app.duration 6944444
+setprop debug.sf.enable_gl_backpressure 0
+setprop debug.sf.latch_unsignaled 1
+setprop debug.sf.disable_backpressure 1
+setprop debug.sf.enable_hwc_vds 1
+setprop debug.sf.recomputecrop 0
+setprop debug.hwui.renderer skiagl
+setprop debug.hwui.force_dark false
+setprop debug.hwui.disable_vsync true
+setprop debug.hwui.use_buffer_age false
+setprop debug.hwui.filter_test_overhead false
+setprop debug.hwui.skia_tracing_enabled false
+setprop debug.hwui.target_cpu_time_percent 100
+setprop debug.hwui.skia_use_perfetto_track_events false
+setprop debug.hwui.profile true
+setprop debug.hwui.show_dirty_regions false
+setprop debug.hwui.skip_empty_damage false
+setprop debug.hwui.use_partial_updates false
+setprop debug.hwui.use_gpu_pixel_buffers true
+setprop debug.egl.hw 1
+setprop debug.egl.profiler 0
+setprop debug.egl.swapinterval 0
+setprop debug.mali.fps 144
+setprop debug.mali.max_fps 144
+setprop debug.mali.target_fps 144
+setprop debug.input.log 0
+setprop debug.atrace.tags.enableflags 0
+setprop debug.vendor.sys.oobe.camera_skin brown
+setprop debug.vendor.sys.camera_country PH
+setprop debug.vendor.sys.country_for_cam PH
+setprop debug.vendor.sys.cameraserver_inuse null
+setprop debug.thermal.throttle.support no
+setprop debug.tracing.mcc 515
+setprop debug.tracing.mnc 3
+setprop debug.tracing.plug_type 0
+setprop debug.tracing.device_state 0:DEFAULT
+setprop debug.tracing.screen_brightness 1.0
+setprop debug.feedback.log.capture 0
+setprop debug.feedback.taglog.time 0
+setprop debug.feedback.bugreport 0
+setprop debug.feedback.bugreport.copy 0
+setprop debug.graphics.game_default_frame_rate.disabled false
+setprop debug.graphics.game_default_frame_rate 144
+setprop debug.mediatek.disp_decompress 1
+setprop debug.mediatek.appgamepq_compress 1
+setprop debug.perfetto.sdk_sysprop_guard_generation 0
+setprop debug.force_rtl false
+setprop debug.mtk_tflite.target_nnapi 34
+setprop debug.composition.type gpu
+setprop debug.performance.tuning 1
+setprop debug.stagefright.c2inputsurface 0
+setprop debug.renderengine.backend skiaglthreaded
+setprop debug.renderengine.skia_tracing_enabled false
+setprop debug.renderengine.skia_use_perfetto_track_events false
+setprop debug.choreographer.vsync 6944444
+setprop debug.choreographer.skipwarning 100
+setprop debug.gpuframelimit 144
+setprop debug.cpurend.vsync false
+setprop debug.enabletr true
+setprop debug.overlayui.enable 1
+setprop debug.qctwa.statusbar 1
+setprop debug.qctwa.preservebuf 1
+setprop debug.gralloc.gfx_ubwc_disable 0
+setprop debug.gralloc.enable_fb_ubwc 1
+setprop debug.mdpcomp.logs 0
+setprop debug.sf.gpu_comp_tiling 1
+setprop debug.sf.enable_transaction_tracing false
+setprop debug.sf.predict 1
+setprop debug.sf.nobootanimation 0
+setprop debug.performance.tuning.enable 1
+setprop os.eye.protect.mode 0
+setprop os.notch.support 2
+setprop os.charging_animation_type 45
+setprop os.keyguard_fixed_dual_clock 1
+setprop os.charging_animation_wire_power 0
+setprop os.charging_animation_wireless_power 0
+setprop ro.os.aam.path /tr_product/etc/transsion_prebuilt/aam_config.json
+setprop ro.os.caller.incoming.ringtone 1
+setprop ro.os.recent.blur 0
+setprop ro.camera.sound.forced 0
+setprop ro.custom.camera.rear.setting "50M OIS+8M"
+setprop ro.custom.camera.front.setting 50M
+setprop ro.faceid.hal.support 1
+setprop ro.faceid.applock.unsupport 1
+setprop ro.faceid.support 1
+setprop ro.faceid.version 2
+setprop ro.faceid.low_battery_light 0
+setprop ro.iorapd.enable false
+setprop ro.kernel.zio 38,108,105,16
+setprop ro.product.freeze.gc.support 0
+setprop ro.product.locale en-US
+setprop ro.product.product.tran.device.name.default "TECNO CAMON 40 Pro 5G"
+setprop ro.product.tr_theme.name TSSI
+setprop ro.product.tr_theme.brand TRANSSION
+setprop ro.product.tr_theme.device COMMON
+setprop ro.product.tr_theme.manufacturer TRANSSION
+setprop ro.product.trantabe.apr.support 1
+setprop ro.product.trantabe.dexfix.support 1
+setprop ro.product.trantabe.install.support 1
+setprop ro.product.trantabe.support 1
+setprop ro.pc_connection_support 1
+setprop ro.tran_game_ims_support 0
+setprop ro.tran_telecom_security.support 1
+setprop ro.tran_vibrate_ontouch2.0.support 0
+setprop ro.tran_vsim_tne_support 1
+setprop ro.mtk_perf_response_time 1
+setprop ro.os_charge_display_type 1
+setprop ro.os_globalguide_support 1
+setprop ro.os_inadvertent_support 1
+setprop ro.tran_90hz_refresh_rate.not_support 0
+setprop ro.tran_144hz_refresh_rate.support 1
+setprop ro.tran_anti_rpmb_support 1
+setprop ro.tran_anti_spec_support 3
+setprop ro.tran_cam_portrait_arch 1
+setprop ro.tran_palm_find_support 1
+setprop ro.tran_sms_retry_support 0
+setprop ro.tran_stk_mpesa_support 1
+setprop ro.app_lock_sr_ps_0004_001.support 1
+setprop ro.launcher_smartwidget_15.1.0_features.support 1
+setprop ro.tran_low_storage_support 0
+setprop ro.tran_mms_timeout_support 0
+setprop ro.tran_smart_5g_gt_support 1
+setprop ro.tran_travel_mode_support 1
+setprop ro.tran_wlan_assistant_cell.support 1
+setprop ro.tranos_audiomode_support 1
+setprop ro.tranos_pedometer_support 0
+setprop ro.mtk_perf_simple_start_win 1
+setprop ro.mtk_perf_fast_start_win 1
+setprop ro.os_anti_addiction_support 0
+setprop ro.os_game_anti_interference.support 1
+setprop ro.os_gesture_answer_support 1
+setprop ro.os_lockscreen_pop_support 1
+setprop ro.os_note_fans_link_support 0
+setprop ro.os_note_sunia_pen_support 0
+setprop ro.os_screen_buttons_support 1
+setprop ro.rlk_multi_gsensor_support 1
+setprop ro.tran_anti_monitor_support 0
+setprop ro.tran_app_brightness_limit.support 0
+setprop ro.tran_chooser_rank_support 1
+setprop ro.tran_default_refresh_mode 14400
+setprop ro.tran_high_brightness_mode.support 1
+setprop ro.tran_lift_wake_up_support 0
+setprop ro.tran_cam_flashsnap_support 1
+setprop ro.tran_crack_monitor_support 0
+setprop ro.tran_demophone_sim_support 0
+setprop ro.tran_google_dialer_support 0
+setprop ro.tran_power_metrics_support 0
+setprop ro.tran_remove_format_private.support 1
+setprop ro.tran_ups_datastall_support 1
+setprop ro.tran_viration_time_support 0
+setprop ro.tranos_fingerprint_support 1
+setprop ro.tranos_onehandmode_support 1
+setprop ro.tran_chat_icon_show_support 0
+setprop ro.tran_garbage_paging_support 0
+setprop ro.tran_gotii_entrance_support 1
+setprop ro.tran_mic_mute_check_support 1
+setprop ro.tran_pt_remote_lock_support 1
+setprop ro.tran_reduce_noise_switch_dl 0
+setprop ro.tran_reduce_noise_switch_on 0
+setprop ro.tran_security_input_support 1
+setprop ro.tran_split_screen_snap_mode.support 1
+setprop ro.tran_ultra_power_v2_support 0
+setprop persist.device_config.aconfig_flags.game.android.os.adpf_hwui_gpu true
+setprop persist.device_config.aconfig_flags.game.android.os.adpf_prefer_power_efficiency false
+setprop persist.device_config.aconfig_flags.game.android.os.adpf_platform_power_efficiency false
+setprop persist.device_config.aconfig_flags.input.com.android.input.flags.enable_input_event_tracing false
+setprop persist.device_config.aconfig_flags.input.filtered_accel_event_rate_hz 240
+setprop persist.device_config.aconfig_flags.input.default_key_press_repeat_rate 16
+setprop persist.device_config.aconfig_flags.input.touch_screen_sample_interval_ms 4
+setprop persist.device_config.aconfig_flags.nearby.nearby_support_test_app false
+setprop persist.device_config.aconfig_flags.nearby.nearby_nano_app_min_version 1
+setprop persist.device_config.aconfig_flags.nearby.nearby_enable_presence_broadcast_legacy false
+setprop persist.device_config.aconfig_flags.sensors.com.android.hardware.libsensor.flags.sensor_event_queue_report_sensor_usage_in_tracing false
+setprop persist.device_config.aconfig_flags.bluetooth.scan_timeout_millis 300000
+setprop persist.device_config.aconfig_flags.bluetooth.location_denylist_mac ""
+setprop persist.device_config.aconfig_flags.bluetooth.audio_policy_ag_enabled true
+setprop persist.device_config.aconfig_flags.bluetooth.audio_policy_hf_enabled true
+setprop persist.device_config.aconfig_flags.bluetooth.le_audio_enabled_by_default false
+setprop persist.device_config.aconfig_flags.bluetooth.INIT_gd_hal_snoop_logger_socket false
+setprop persist.device_config.aconfig_flags.bluetooth.INIT_gd_hal_snoop_logger_filtering false
+setprop persist.sys.sf.color_saturation 1.1
+setprop persist.sys.sf.native_mode 2
+setprop persist.sys.sf.disable_triple_buffer 0
+setprop persist.sys.ui.hw 1
+setprop persist.sys.scrollingcache 3
+setprop persist.sys.purgeable_assets 1
+setprop persist.sys.use_16bpp_alpha 1
+setprop persist.sys.use_dithering 0
+setprop persist.sys.thermal.enable 0
+setprop persist.vendor.qti.games.gt.prof 1
+setprop debug.game.7gen true
+setprop debug.game.mode 2
+setprop debug.game.video.support 1
+setprop debug.game.video.speed 1
+setprop debug.disable.hwacc 0
+setprop debug.kill_allocating_task 0
+setprop debug.sqlite.journalmode OFF
+setprop debug.sqlite.syncmode 0
+setprop debug.sqlite.wal.syncmode 0
+setprop video.accelerate.hw 1
+setprop windowsmgr.max_events_per_sec 300
+setprop ro.config.hw_quickpoweron true
+setprop ro.config.enable.hw_accel true
+setprop ro.product.gpu.driver 1
+setprop ro.fb.mode 1
+setprop ro.sf.lcd_density 480
+setprop ro.kernel.android.checkjni 0
+setprop ro.kernel.checkjni 0
+setprop ro.config.nocheckin 1
+setprop ro.telephony.call_ring.delay 0
+setprop ro.lmk.critical_upgrade false
+setprop ro.lmk.upgrade_pressure 40
+setprop ro.lmk.downgrade_pressure 60
+setprop ro.lmk.kill_heaviest_task true
+setprop ro.lmk.kill_timeout_ms 100
+setprop ro.vendor.qti.sys.fw.bservice_enable true
+setprop ro.vendor.qti.sys.fw.bservice_limit 60
+setprop ro.vendor.qti.sys.fw.bservice_age 5000
+setprop ro.vendor.at_library libqti-at.so
+setprop ro.vendor.gt_library libqti-gt.so
+setprop sys.use_fifo_ui 1
+setprop sys.games.gt.prof 1
+setprop debug.sf.frame_rate_multiple_threshold 144
+setprop debug.cpurend.vsync 0
+setprop debug.overlayui.enable 1
+setprop debug.performance.tuning 1
+
+# ============================================
+# COPY SCRIPT TO /data/local/tmp
+# ============================================
+echo "Copying script to /data/local/tmp..."
+SCRIPT_NAME="Max_Android🎃😱.so"
+SOURCE_PATH="/sdcard/$SCRIPT_NAME"
+TARGET_PATH="/data/local/tmp/$SCRIPT_NAME"
+
+cp "$SOURCE_PATH" "$TARGET_PATH" 2>/dev/null
+if [ $? -eq 0 ]; then
+    chmod 755 "$TARGET_PATH"
+    echo "✓ Script copied to $TARGET_PATH"
+else
+    echo "⚠ Could not copy to /data/local/tmp (use ADB if needed)"
+fi
+
+# ============================================
+# LOGGING & VERIFICATION
+# ============================================
+echo "=========================================="
+echo "✓ ALL SETTINGS APPLIED SUCCESSFULLY!"
+echo "=========================================="
+
+# Create comprehensive log
+LOG_FILE="/sdcard/max_android_complete.log"
+echo "========================================" > "$LOG_FILE"
+echo "Max Android Optimizer - Complete Log" >> "$LOG_FILE"
+echo "Timestamp: $(date '+%Y-%m-%d %H:%M:%S')" >> "$LOG_FILE"
+echo "========================================" >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
+
+echo "=== DALVIK VM SETTINGS ===" >> "$LOG_FILE"
+settings list system | grep dalvik >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
+
+echo "=== SURFACEFLINGER SETTINGS ===" >> "$LOG_FILE"
+settings list system | grep debug.sf >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
+
+echo "=== HWUI SETTINGS ===" >> "$LOG_FILE"
+settings list system | grep hwui >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
+
+echo "=== EGL & GPU SETTINGS ===" >> "$LOG_FILE"
+settings list system | grep -E "debug.egl|debug.mali" >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
+
+echo "=== GAME SETTINGS ===" >> "$LOG_FILE"
+settings list system | grep debug.game >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
+
+echo "=== PERFORMANCE SETTINGS ===" >> "$LOG_FILE"
+settings list system | grep -E "debug.performance|persist.sys" >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
+
+echo "=== RO SETTINGS ===" >> "$LOG_FILE"
+settings list system | grep "^ro\." >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
+
+echo "=== GLOBAL FLAGS ===" >> "$LOG_FILE"
+settings list global | grep persist.device_config >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
+
+echo "========================================" >> "$LOG_FILE"
+echo "Log completed at: $(date '+%Y-%m-%d %H:%M:%S')" >> "$LOG_FILE"
+echo "========================================" >> "$LOG_FILE"
+
+echo ""
+echo "✓ Log saved to: $LOG_FILE"
+echo ""
+echo "To verify all settings:"
+echo "  settings list system | grep debug"
+echo "  settings list global | grep persist"
+echo ""
+echo "Script location: $TARGET_PATH"
+echo ""
+echo "=========================================="
+echo "OPTIMIZATION COMPLETE! Reboot recommended."
+echo "=========================================="

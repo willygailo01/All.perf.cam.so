@@ -1,0 +1,341 @@
+#!/bin/bash
+
+# Force 5G/6G Network & Maximum Signal Performance Script
+
+# ===== Mobile Network Force 5G/6G =====
+
+# Force 5G NR (New Radio) Mode
+settings put global preferred_network_mode 33
+settings put global preferred_network_mode1 33
+settings put global preferred_network_mode2 33
+
+# 5G Network Priority (NR/LTE/WCDMA/GSM)
+settings put global network_mode_5g_enabled 1
+settings put global nr_nsa_tracking_area_update_enabled true
+settings put global 5g_icon_configuration 1
+settings put global 5g_icon_display_grace_period_sec 0
+
+# Force NR (5G) Connection
+settings put global carrier_nr_availabilities 1
+settings put global nr_advanced_capable 1
+settings put global enable_nr_advanced 1
+settings put global nr_connection_enabled 1
+
+# Disable 5G Power Saving
+settings put global 5g_mode_pref 1
+settings put global nr_switch_type 0
+settings put global smart_5g_enabled 0
+
+# Maximum Network Performance
+settings put global mobile_data_always_on 1
+settings put global data_roaming 1
+settings put global data_roaming2 1
+
+# LTE/5G Aggregation
+settings put global carrier_aggregation_enabled 1
+settings put global lte_endc_using_user_data_settings 1
+settings put global volte_vt_enabled 1
+
+# ===== WiFi 6/6E/7 Force Maximum Performance =====
+
+# Enable WiFi 6/6E/7
+settings put global wifi_6ghz_enabled 1
+settings put global wifi_6e_enabled 1
+settings put global wifi_ax_enabled 1
+settings put global wifi_be_enabled 1
+
+# WiFi Performance Mode
+settings put global wifi_sleep_policy 2
+settings put global wifi_idle_ms 900000
+settings put global wifi_scan_always_enabled 1
+settings put global wifi_networks_available_notification_on 0
+
+# WiFi Speed & Bandwidth Optimization
+settings put global wifi_frequency_band 0
+settings put global wifi_max_dhcp_retry_count 0
+settings put global wifi_country_code "00"
+settings put global wifi_5ghz_preference 1
+
+# Disable WiFi Power Saving
+settings put global wifi_suspend_optimizations_enabled 0
+settings put global wifi_adaptive_wifi 0
+settings put global wifi_enhanced_mac_randomization_feature_enabled 0
+
+# WiFi Direct & Hotspot Performance
+settings put global wifi_p2p_device_name "MaxPerf"
+settings put global tether_dun_required 0
+settings put global tether_offload_disabled 0
+
+# ===== Signal Strength Optimization =====
+
+# Cellular Signal Boost
+settings put global cell_on 1
+settings put global airplane_mode_radios ""
+settings put global airplane_mode_toggleable_radios "bluetooth,wifi,nfc"
+
+# Disable Signal Throttling
+settings put global network_recommendations_enabled 0
+settings put global network_avoid_bad_wifi 0
+settings put global network_metered_multipath_preference 0
+
+# Enhanced Signal Processing
+settings put global enhanced_4g_lte_mode_enabled 1
+settings put global lte_service_forced 1
+settings put global preferred_network_mode_enabled 1
+
+# ===== Data Speed Optimization =====
+
+# TCP/IP Optimization
+settings put global tcp_default_init_rwnd 60
+settings put global network_sampling_interval 0
+
+# Background Data Unlimited
+settings put global restrict_background_data 0
+settings put global netpolicy_quota_enabled 0
+settings put global netpolicy_quota_unlimited 1
+
+# Disable Data Saver
+settings put global data_saver_mode 0
+settings put global restrict_background_blacklist ""
+settings put global restrict_background_whitelist ""
+
+# ===== Advanced Network Tweaks =====
+
+# Captive Portal & Connectivity Check
+settings put global captive_portal_mode 0
+settings put global captive_portal_detection_enabled 0
+settings put global captive_portal_server ""
+
+# Network Speed Test Bypass
+settings put global network_speed_test_enabled 0
+
+# DNS & Connection Optimization
+settings put global private_dns_mode off
+settings put global private_dns_default_mode off
+
+# Disable Network Monitoring
+settings put global network_recommendation_request_timeout_ms 0
+settings put global network_watchlist_enabled 0
+
+# ===== Carrier Aggregation & MIMO =====
+
+# Enable All CA Combinations
+settings put global lte_ca_enable 1
+settings put global nr_ca_enable 1
+settings put global endc_ca_enable 1
+
+# MIMO Configuration
+settings put global mimo_enabled 1
+settings put global mimo_mode 3
+
+# ===== VoLTE & VoWiFi Force Enable =====
+
+# VoLTE Enable
+settings put global volte_enabled 1
+settings put global enhanced_4g_mode_enabled 1
+settings put global vonr_enabled 1
+
+# VoWiFi Enable
+settings put global wfc_enabled 1
+settings put global wfc_mode 2
+
+# ===== Antenna & RF Optimization =====
+
+# Maximum Transmission Power
+settings put global max_tx_power 1
+settings put global adaptive_connectivity_enabled 0
+
+# Disable Proximity Sensor RF Reduction
+settings put system proximity_on_wake 0
+
+# ===== Bluetooth 5.3/5.4 Optimization =====
+
+# Bluetooth High Performance
+settings put global bluetooth_on 1
+settings put global ble_scan_always_enabled 1
+settings put global bluetooth_a2dp_sink_priority_list ""
+settings put global bluetooth_hardware_offload_enabled 1
+
+# ===== NFC Maximum Performance =====
+
+# NFC Always On
+settings put global nfc_on 1
+settings put secure nfc_payment_foreground 1
+
+# ===== Final Network Optimizations =====
+
+# Disable Adaptive Connectivity
+settings put global adaptive_connectivity_enabled 0
+
+# Network Preference Override
+settings put global network_preference 1
+
+# Force Carrier Config Update
+settings put global carrier_config_applied 1
+
+# Emergency Network Override
+settings put global emergency_affordance_needed 0
+
+echo "=================================="
+echo "5G/6G Network Force Applied!"
+echo "WiFi 6/6E/7 Enabled!"
+echo "Maximum Signal Strength Unlocked!"
+echo "All Network Restrictions Removed!"
+echo "=================================="
+echo "Toggle Airplane Mode ON/OFF to apply"
+echo "Reboot recommended for full effect"
+sleep 6
+
+# Android 15 Maximum Performance Script (Non-Root)
+# Force Override All Performance Limits
+
+# Display & Refresh Rate
+settings put system peak_refresh_rate 144
+settings put system min_refresh_rate 120
+settings put system user_refresh_rate 144
+settings put secure refresh_rate_mode 0
+settings put system force_high_refresh_rate 1
+
+# GPU Maximum Performance
+settings put system persist.sys.gpu.performance 1
+settings put global persist.sys.gpu.max_freq 1000000000
+settings put system persist.sys.gpu.powersave 0
+settings put system persist.sys.force_highendgfx 1
+settings put system persist.sys.force_hw_ui 1
+settings put system persist.sys.mali.perf 1
+
+# Game Mode Maximum
+settings put system persist.sys.game.mode 3
+settings put global game_driver_all_apps 1
+settings put global gpu_debug_layers ""
+
+# FPS Unlock & Limit Override
+settings put system persist.sys.NV_FPSLIMIT 144
+settings put system persist.sys.NV_POWERMODE 1
+settings put system persist.sys.NV_PROFVER 15
+settings put system persist.sys.NV_STEREOCTRL 0
+settings put system persist.sys.NV_STEREOSEP 20
+settings put system persist.sys.NV_STEREOSEPCHG 0
+
+# Power Mode Override
+settings put global low_power 0
+settings put system persist.sys.battery_saver 0
+settings put system persist.radio.add_power_save 0
+settings put global automatic_power_save_mode 0
+settings put global dynamic_power_savings_enabled 0
+settings put global battery_saver_constants ""
+
+# CPU & Thermal Override
+settings put global device_config_sync_disabled 1
+settings put global enhanced_processing 1
+settings put system persist.thermal.mode 0
+settings put system persist.sys.thermal.enable 0
+
+# Touch Performance
+settings put system multi_exposure_mode 0
+settings put system multi_press_timeout 50
+settings put system multitouch.min_distance 0.2
+settings put system multitouch.settle_interval 0.005
+settings put system touch.pressure.scale 0.001
+settings put system persist.device_config.aconfig_flags.input.touch_screen_sample_interval_ms 1
+settings put system pointer_speed 0
+
+# Display Composition
+settings put system persist.sys.composition.type gpu
+settings put system persist.sys.dalvik.vm.lib.2 libart.so
+settings put system debug.sf.hw 1
+settings put system debug.egl.hw 1
+settings put system debug.composition.type gpu
+settings put system video.accelerate.hw 1
+settings put system debug.sf.disable_backpressure 1
+settings put system debug.sf.latch_unsignaled 1
+
+# Rendering Optimization
+settings put system debug.performance.tuning 1
+settings put system persist.sys.ui.hw 1
+settings put system ro.config.enable.hw_accel true
+settings put system ro.product.gpu.driver 1
+settings put system debug.cpurend.vsync false
+settings put system debug.sf.nobootanimation 1
+
+# Memory & Storage Performance
+settings put global cached_apps_freezer enabled
+settings put global app_standby_enabled 0
+settings put global adaptive_battery_management_enabled 0
+settings put system persist.sys.scrollingcache 3
+settings put system persist.sys.purgeable_assets 1
+
+# Network Performance
+settings put global network_recommendations_enabled 0
+settings put global wifi_scan_always_enabled 0
+settings put global ble_scan_always_enabled 0
+settings put global network_scoring_ui_enabled 0
+
+# Audio Optimization
+settings put system persist.audio.fluence.speaker true
+settings put system persist.audio.fluence.voicecall true
+settings put system persist.audio.fluence.voicerec true
+settings put system mute_streams_affected 110
+settings put system audio_safe_volume_state 3
+
+# Disable System Throttling
+settings put system persist.android.strictmode 0
+settings put system persist.service.lgospd.enable 0
+settings put system persist.service.pcsync.enable 0
+settings put global app_standby_enabled 0
+settings put global forced_app_standby_enabled 0
+
+# Animation Speed Override
+settings put global window_animation_scale 0.5
+settings put global transition_animation_scale 0.5
+settings put global animator_duration_scale 0.5
+
+# Camera Performance
+settings put system persist.camera.cpp.duplication 1
+settings put system persist.camera.hal.debug.mask 0
+
+# Advanced Runtime Tweaks
+settings put system persist.device_config.aconfig_flags.runtime_native_boot.iorap_perfetto_enable false
+settings put global angle_debug_package ""
+settings put global angle_gl_driver_selection_pkgs ""
+settings put global angle_gl_driver_selection_values ""
+
+# Haptic Feedback Optimization
+settings put system haptic_feedback_enabled 1
+settings put system haptic_feedback_intensity 3
+
+# Developer Options Performance
+settings put global development_settings_enabled 1
+settings put global adb_enabled 1
+settings put global stay_on_while_plugged_in 7
+settings put system screen_off_timeout 600000
+
+# Accessibility Performance Override
+settings put secure accessibility_enabled 0
+settings put secure enabled_accessibility_services ""
+
+# System UI Performance
+settings put system persist.sys.ui.rendering gpu
+settings put system persist.hwui.render_ahead 2
+settings put system persist.hwui.use_gpu_pixel_buffers true
+
+# Android 15 Specific Optimizations
+settings put global sem_enhanced_cpu_responsiveness 1
+settings put system persist.sys.game_mode_performance 1
+settings put global gaming_mode_active 1
+settings put system persist.sys.enable_game_default_fps_uncap 1
+settings put global enable_gpu_debug_layers 0
+
+# Force Maximum Performance Profile
+settings put secure low_power_standby_enabled 0
+settings put secure adaptive_sleep 0
+settings put global theater_mode_on 0
+settings put global zen_mode 0
+
+# Clear Performance Restrictions
+settings put global app_restriction_enabled false
+settings put global restricted_networking_mode 0
+
+echo "Android 15 Maximum Performance Mode Activated!"
+echo "All restrictions overridden - Non-root optimizations applied"
+echo "Reboot recommended for full effect"

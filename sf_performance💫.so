@@ -1,0 +1,116 @@
+#!/system/bin/sh
+
+# ============================================
+# SELF-COPY to /data/local/tmp (for persistence)
+# ============================================
+
+SCRIPT_NAME="sf_performance💫.so"
+SOURCE_PATH="/sdcard/$SCRIPT_NAME"
+TARGET_PATH="/data/local/tmp/$SCRIPT_NAME"
+
+echo "=========================================="
+echo "SF Performance Optimizer v2.0"
+echo "=========================================="
+
+# Check if script needs to be copied to /data/local/tmp
+if [ ! -f "$TARGET_PATH" ] || [ "$SOURCE_PATH" -nt "$TARGET_PATH" ]; then
+    echo "Copying script to /data/local/tmp..."
+    cp "$SOURCE_PATH" "$TARGET_PATH" 2>/dev/null
+    
+    if [ $? -eq 0 ]; then
+        chmod 755 "$TARGET_PATH"
+        echo "✓ Script copied successfully to $TARGET_PATH"
+    else
+        echo "⚠ Warning: Could not copy to /data/local/tmp (may need ADB)"
+        echo "  Run: cp /sdcard/$SCRIPT_NAME /data/local/tmp/"
+    fi
+else
+    echo "✓ Script already exists in /data/local/tmp"
+fi
+
+# Wait for system to fully boot
+echo "Waiting for system to stabilize..."
+sleep 10
+
+# ============================================
+# SETTINGS DATABASE (Permanent - survives reboot)
+# ============================================
+
+echo "Applying settings to Android Properties..."
+
+# Enable Hardware Composer VDS
+settings put system debug.sf.enable_hwc_vds 1
+
+# Optimize duration values (reduce lag)
+settings put system debug.sf.hwc.min.duration 1000000
+settings put system debug.sf.late.sf.duration 1000000
+settings put system debug.sf.late.app.duration 1000000
+settings put system debug.sf.early.sf.duration 1000000
+settings put system debug.sf.early.app.duration 1000000
+settings put system debug.sf.earlyGl.sf.duration 1000000
+settings put system debug.sf.earlyGl.app.duration 1000000
+
+# Additional SF settings
+settings put system debug.sf.hw 1
+settings put system debug.sf.latch_unsignaled 1
+settings put system debug.sf.disable_backpressure 1
+settings put system debug.sf.enable_gl_backpressure 1
+settings put system debug.sf.no_hw_vsync 0
+settings put system debug.sf.recomputecrop 0
+
+# Triple buffering
+settings put system debug.sf.enable_triple_buffering 1
+
+# GPU optimizations
+settings put system debug.egl.hw 1
+settings put system debug.composition.type gpu
+
+# HWUI optimizations
+settings put system hwui.render_dirty_regions false
+settings put system hwui.disable_vsync false
+
+# Persist flags (may work on some devices)
+settings put global persist.device_config.aconfig_flags.core_graphics.com.android.graphics.surfaceflinger.flags.add_sf_skipped_frames_to_trace false
+settings put global persist.device_config.aconfig_flags.core_graphics.com.android.graphics.surfaceflinger.flags.deprecate_vsync_sf false
+
+# ============================================
+# SETPROP (Temporary - for current session)
+# ============================================
+
+# Additional setprop commands for immediate effect
+settings put system debug.sf.hw 1
+settings put system debug.sf.latch_unsignaled 1
+settings put system debug.sf.disable_backpressure 1
+settings put system debug.sf.enable_gl_backpressure 1
+settings put system debug.egl.hw 1
+settings put system debug.composition.type gpu
+settings put system hwui.render_dirty_regions false
+settings put system hwui.disable_vsync false
+settings put system debug.sf.no_hw_vsync 0
+settings put system debug.sf.recomputecrop 0
+settings put system debug.sf.enable_triple_buffering 1
+
+# ============================================
+# LOGGING & VERIFICATION
+# ============================================
+
+echo "=========================================="
+echo "✓ Optimization complete!"
+echo "=========================================="
+
+# Log completion
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] SF optimization applied successfully" >> /sdcard/sf_optimize.log
+echo "Script location: $TARGET_PATH" >> /sdcard/sf_optimize.log
+
+# Verify settings
+echo "" >> /sdcard/sf_optimize.log
+echo "=== Applied Settings ===" >> /sdcard/sf_optimize.log
+settings list system | grep -E "debug.sf|debug.egl|hwui|debug.composition" >> /sdcard/sf_optimize.log
+
+echo "Log saved to: /sdcard/sf_optimize.log"
+echo ""
+echo "To verify settings:"
+echo "  settings list system | grep debug.sf"
+echo ""
+echo "To run from /data/local/tmp:"
+echo "  sh /data/local/tmp/$SCRIPT_NAME"

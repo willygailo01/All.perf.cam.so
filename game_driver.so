@@ -1,0 +1,89 @@
+#!/system/bin/sh
+
+# Android Graphics Driver Performance Optimization Script
+# Run this script directly on your Android device using a terminal app (Termux, etc.)
+# Some commands may require root access
+
+echo "=============================================="
+echo "Android Graphics Driver Performance Setup"
+echo "=============================================="
+echo ""
+
+# Check if running on Android
+if [ ! -d "/system" ]; then
+    echo "ERROR: This script must run on an Android device"
+    exit 1
+fi
+
+echo "Configuring graphics driver preferences..."
+echo ""
+
+# Enable graphics driver preferences globally
+echo "→ Enabling graphics driver preferences..."
+settings put global updatable_driver_all_apps 1
+
+# Set game driver to be used for all apps
+echo "→ Setting game driver for all applications..."
+settings put global game_driver_all_apps 1
+
+# Enable performance mode
+echo "→ Enabling performance mode..."
+settings put global gpu_debug_layers_enable 0
+settings put global enable_gpu_debug_layers 0
+
+# Disable ANGLE (use native driver for better performance)
+echo "→ Configuring native graphics driver..."
+settings put global angle_gl_driver_selection_pkgs ""
+settings put global angle_gl_driver_selection_values ""
+
+# Force GPU rendering
+echo "→ Forcing GPU rendering for 2D operations..."
+settings put global force_gpu_rendering 1
+
+# Set GPU rendering properties
+echo "→ Setting GPU rendering properties..."
+setprop debug.egl.profiler 1
+setprop debug.egl.hw 1
+setprop debug.composition.type gpu
+setprop debug.performance.tuning 1
+setprop video.accelerate.hw 1
+setprop debug.sf.disable_backpressure 1
+
+# Disable hardware overlays (requires root)
+echo "→ Optimizing hardware overlay settings..."
+su -c "service call SurfaceFlinger 1008 i32 1" 2>/dev/null || echo "   (Skipped - requires root)"
+
+# Set performance governor (requires root)
+echo "→ Attempting to set performance governor..."
+su -c "echo performance > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor" 2>/dev/null || echo "   (Skipped - requires root)"
+
+echo ""
+echo "=============================================="
+echo "Configuration Complete!"
+echo "=============================================="
+echo ""
+echo "Applied settings:"
+echo "  ✓ Graphics driver preferences enabled"
+echo "  ✓ Game driver enabled for all apps"
+echo "  ✓ GPU rendering optimizations applied"
+echo "  ✓ Performance mode activated"
+echo ""
+echo "IMPORTANT NOTES:"
+echo "  • Reboot your device for all changes to take effect"
+echo "  • Performance mode may increase battery drain"
+echo "  • Some settings require root access"
+echo "  • Settings persist until factory reset"
+echo ""
+echo "To reboot: reboot (requires root) or reboot manually"
+echo "=============================================="
+echo ""
+
+# Show current settings
+echo "Current Graphics Settings:"
+echo "-------------------------"
+echo "Driver preferences: $(settings get global updatable_driver_all_apps)"
+echo "Game driver all apps: $(settings get global game_driver_all_apps)"
+echo "Force GPU rendering: $(settings get global force_gpu_rendering)"
+echo ""
+
+exit 0

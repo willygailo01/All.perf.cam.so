@@ -1,0 +1,356 @@
+#!/system/bin/sh
+# ============================================================================
+# ANDROID PERFORMANCE OPTIMIZATION - SYSTEM PROPERTIES
+# Direct System Properties (ro., dalvik, debug, persist, etc.)
+# For NON-ROOTED devices using settings put system/global/secure
+# ============================================================================
+
+echo "=========================================="
+echo "Android System Properties Optimization"
+echo "Direct Property Modification"
+echo "=========================================="
+
+# ============================================================================
+# DALVIK VM PROPERTIES (Performance Critical)
+# ============================================================================
+echo "Optimizing Dalvik VM..."
+
+settings put system ro.dalvik.vm.enable_uffd_gc true
+settings put system ro.zygote zygote64
+settings put system dalvik.vm.isa.arm64.variant cortex-a55
+settings put system dalvik.vm.isa.arm64.features default
+settings put system dalvik.vm.dexopt.secondary true
+settings put system dalvik.vm.dexopt.thermal-cutoff 0
+settings put system dalvik.vm.usejit true
+settings put system dalvik.vm.usejitprofiles true
+settings put system dalvik.vm.heapsize 512m
+settings put system dalvik.vm.heapgrowthlimit 256m
+settings put system dalvik.vm.heapstartsize 16m
+settings put system dalvik.vm.heaptargetutilization 0.75
+settings put system dalvik.vm.heapminfree 2m
+settings put system dalvik.vm.heapmaxfree 8m
+settings put system dalvik.vm.execution-mode int:jit
+settings put system dalvik.vm.dex2oat-flags --no-watch-dog
+settings put system dalvik.vm.dex2oat-threads 4
+settings put system dalvik.vm.dex2oat-cpu-set 0,1,2,3,4,5,6,7
+settings put system dalvik.vm.image-dex2oat-threads 4
+settings put system dalvik.vm.image-dex2oat-cpu-set 0,1,2,3,4,5,6,7
+settings put system dalvik.vm.dex2oat-filter speed
+settings put system dalvik.vm.image-dex2oat-filter speed
+
+# ============================================================================
+# RUNTIME PROPERTIES
+# ============================================================================
+echo "Optimizing Runtime..."
+
+settings put system ro.sys.fw.dex2oat_thread_count 4
+settings put system ro.vendor.qti.am.reschedule_service true
+settings put system ro.vendor.perf.scroll_opt true
+settings put system ro.hwui.texture_cache_size 72
+settings put system ro.hwui.layer_cache_size 48
+settings put system ro.hwui.path_cache_size 32
+settings put system ro.hwui.gradient_cache_size 1
+settings put system ro.hwui.drop_shadow_cache_size 6
+settings put system ro.hwui.r_buffer_cache_size 8
+settings put system ro.hwui.text_large_cache_height 1024
+settings put system ro.hwui.text_large_cache_width 2048
+settings put system ro.hwui.text_small_cache_height 1024
+settings put system ro.hwui.text_small_cache_width 1024
+
+# ============================================================================
+# DEBUG & RENDERING PROPERTIES
+# ============================================================================
+echo "Optimizing Debug & Rendering..."
+
+settings put system debug.hwui.renderer skiagl
+settings put system debug.renderengine.backend skiaglthreaded
+settings put system debug.hwui.profile false
+settings put system debug.hwui.show_dirty_regions false
+settings put system debug.hwui.fps_divisor 1
+settings put system debug.hwui.use_buffer_age false
+settings put system debug.composition.type gpu
+settings put system debug.egl.hw 1
+settings put system debug.sf.hw 1
+settings put system debug.performance.tuning 1
+settings put system debug.sf.disable_backpressure 1
+settings put system debug.sf.latch_unsignaled 1
+settings put system debug.sf.enable_hwc_vds 1
+settings put system debug.sf.enable_gl_backpressure 1
+settings put system debug.cpurend.vsync false
+settings put system debug.enable.sglscale 1
+settings put system debug.mdpcomp.logs 0
+settings put system debug.egl.profiler 0
+settings put system debug.egl.trace 0
+
+# ============================================================================
+# GPU & GRAPHICS PROPERTIES
+# ============================================================================
+echo "Optimizing GPU..."
+
+settings put system ro.config.enable.hw_accel true
+settings put system ro.product.gpu.driver 1
+settings put system ro.fb.mode 1
+settings put system ro.sf.lcd_density 480
+settings put system ro.opengles.version 196610
+settings put system debug.gr.numframebuffers 3
+settings put system debug.gr.swapinterval 1
+settings put system persist.sys.ui.hw 1
+settings put system video.accelerate.hw 1
+settings put system debug.overlayui.enable 1
+settings put system debug.qctwa.preservebuf 1
+settings put system com.qc.hardware true
+
+# ============================================================================
+# MEMORY & PERFORMANCE PROPERTIES
+# ============================================================================
+echo "Optimizing Memory..."
+
+settings put system ro.config.low_ram false
+settings put system ro.config.max_starting_bg 8
+settings put system ro.config.hw_quickpoweron true
+settings put system ro.config.hw_fast_dormancy 1
+settings put system persist.sys.purgeable_assets 1
+settings put system persist.service.lgospd.enable 0
+settings put system persist.service.pcsync.enable 0
+settings put system ro.ril.power_collapse 1
+settings put system pm.sleep_mode 1
+settings put system ro.ril.disable.power.collapse 0
+
+# ============================================================================
+# KERNEL & SCHEDULER PROPERTIES
+# ============================================================================
+echo "Optimizing Kernel..."
+
+settings put system ro.kernel.android.checkjni 0
+settings put system ro.kernel.checkjni 0
+settings put system ro.telephony.call_ring.delay 0
+settings put system ring.delay 0
+settings put system ro.lge.proximity.delay 25
+settings put system mot.proximity.delay 25
+settings put system ro.mot.eri.losalert.delay 1000
+
+# ============================================================================
+# NETWORK PROPERTIES
+# ============================================================================
+echo "Optimizing Network..."
+
+settings put system net.tcp.buffersize.default 4096,87380,256960,4096,16384,256960
+settings put system net.tcp.buffersize.wifi 4096,87380,256960,4096,16384,256960
+settings put system net.tcp.buffersize.lte 524288,1048576,2097152,524288,1048576,2097152
+settings put system net.tcp.buffersize.umts 4096,87380,256960,4096,16384,256960
+settings put system net.tcp.buffersize.hspa 4096,87380,256960,4096,16384,256960
+settings put system net.tcp.buffersize.edge 4096,87380,256960,4096,16384,256960
+settings put system net.tcp.buffersize.gprs 4096,87380,256960,4096,16384,256960
+settings put system net.tcp.buffersize.evdo 4096,87380,256960,4096,16384,256960
+settings put system net.tcp.buffersize.ehrpd 4096,87380,256960,4096,16384,256960
+settings put system net.tcp.buffersize.hsdpa 4096,87380,256960,4096,16384,256960
+settings put system net.tcp.buffersize.hsupa 4096,87380,256960,4096,16384,256960
+settings put system net.dns1 8.8.8.8
+settings put system net.dns2 8.8.4.4
+settings put system net.rmnet0.dns1 8.8.8.8
+settings put system net.rmnet0.dns2 8.8.4.4
+settings put system net.ppp0.dns1 8.8.8.8
+settings put system net.ppp0.dns2 8.8.4.4
+settings put system wifi.supplicant_scan_interval 180
+settings put system ro.ril.enable.dtm 1
+settings put system ro.ril.gprsclass 10
+settings put system ro.ril.hsdpa.category 10
+settings put system ro.ril.hsupa.category 6
+settings put system ro.ril.hsxpa 2
+
+# ============================================================================
+# MEDIA & AUDIO PROPERTIES
+# ============================================================================
+echo "Optimizing Media..."
+
+settings put system media.stagefright.enable-player true
+settings put system media.stagefright.enable-meta true
+settings put system media.stagefright.enable-scan true
+settings put system media.stagefright.enable-http true
+settings put system media.stagefright.enable-aac true
+settings put system media.stagefright.enable-qcp true
+settings put system ro.media.dec.jpeg.memcap 8000000
+settings put system ro.media.enc.hprof.vid.bps 8000000
+settings put system ro.media.enc.jpeg.quality 100
+
+# ============================================================================
+# PERSIST PROPERTIES (Survive Reboot)
+# ============================================================================
+echo "Optimizing Persist Properties..."
+
+settings put system persist.sys.ui.hw 1
+settings put system persist.sys.use_16bpp_alpha 1
+settings put system persist.sys.use_dithering 0
+settings put system persist.sys.purgeable_assets 1
+settings put system persist.sys.scrollingcache 3
+settings put system persist.sys.NV_FPSLIMIT 60
+settings put system persist.sys.NV_POWERMODE 1
+settings put system persist.sys.NV_PROFVER 15
+settings put system persist.sys.NV_STEREOCTRL 0
+settings put system persist.sys.NV_STEREOSEPCHG 0
+settings put system persist.sys.NV_STEREOSEP 20
+settings put system persist.adb.notify 0
+settings put system persist.android.strictmode 0
+
+# ============================================================================
+# TOUCH & RESPONSIVENESS
+# ============================================================================
+echo "Optimizing Touch Response..."
+
+settings put system windowsmgr.max_events_per_sec 150
+settings put system ro.max.fling_velocity 12000
+settings put system ro.min.fling_velocity 8000
+settings put system ro.min_pointer_dur 8
+settings put system touch.pressure.scale 0.001
+settings put system touch.size.scale 1
+settings put system touch.size.bias 0
+settings put system touch.size.isSummed 0
+settings put system view.touch_slop 8
+settings put system view.minimum_fling_velocity 25
+
+# ============================================================================
+# POWER MANAGEMENT
+# ============================================================================
+echo "Optimizing Power Management..."
+
+settings put system ro.ril.disable.power.collapse 0
+settings put system ro.ril.fast.dormancy.rule 1
+settings put system ro.ril.fast.dormancy.timeout 3
+settings put system ro.mot.eri.losalert.delay 1000
+settings put system ro.config.hw_power_saving 0
+settings put system power.saving.mode 0
+settings put system persist.radio.add_power_save 0
+
+# ============================================================================
+# LOGGING & DEBUGGING (Disable for Performance)
+# ============================================================================
+echo "Disabling Logging..."
+
+settings put system logcat.live disable
+settings put system debugtool.anrhistory 0
+settings put system profiler.force_disable_err_rpt 1
+settings put system profiler.force_disable_ulog 1
+settings put system profiler.debugmonitor false
+settings put system profiler.launch false
+settings put system profiler.hung.dumpdobugreport false
+settings put system ro.config.nocheckin 1
+settings put system ro.debuggable 0
+settings put system ro.secure 1
+
+# ============================================================================
+# BATTERY OPTIMIZATION
+# ============================================================================
+echo "Optimizing Battery..."
+
+settings put system ro.ril.sensor.sleep.control 1
+settings put system ro.ril.wake_lock_timeout 300000
+settings put system ro.mot.eri.losalert.delay 1000
+settings put system pm.sleep.mode 1
+
+# ============================================================================
+# ZYGOTE & BOOT PROPERTIES
+# ============================================================================
+echo "Optimizing Zygote & Boot..."
+
+settings put system ro.zygote.disable_gl_preload 1
+settings put system ro.boot.selinux permissive
+settings put system ro.config.hw_quickpoweron true
+settings put system persist.sys.strictmode.visual 0
+settings put system persist.sys.strictmode.disable 1
+
+# ============================================================================
+# CAMERA PROPERTIES
+# ============================================================================
+echo "Optimizing Camera..."
+
+settings put system camera.disable_zsl_mode 0
+settings put system ro.camera.sound.forced 0
+settings put system ro.camera.hfr.enable 1
+
+# ============================================================================
+# ADDITIONAL PERFORMANCE TWEAKS
+# ============================================================================
+echo "Additional Tweaks..."
+
+settings put system ro.HOME_APP_ADJ 1
+settings put system ro.max_hidden_apps 10
+settings put system ro.FOREGROUND_APP_ADJ 0
+settings put system ro.VISIBLE_APP_ADJ 1
+settings put system ro.PERCEPTIBLE_APP_ADJ 2
+settings put system ro.HEAVY_WEIGHT_APP_ADJ 3
+settings put system ro.SECONDARY_SERVER_ADJ 4
+settings put system ro.BACKUP_APP_ADJ 5
+settings put system ro.HOME_APP_ADJ 6
+settings put system ro.HIDDEN_APP_MIN_ADJ 7
+settings put system ro.CONTENT_PROVIDER_ADJ 14
+
+# ============================================================================
+# PREVIOUSLY INCLUDED SETTINGS (From your original file)
+# ============================================================================
+echo "Applying Network & System Settings..."
+
+# Network Optimization
+settings put system netd_native.doh 1
+settings put system netd_native.parallel_lookup 0
+settings put system netd_native.sort_nameservers 0
+settings put system netd_native.max_cache_entries 640
+settings put system netd_native.max_queries_global 2500
+settings put system netd_native.dot_query_timeout_ms -1
+settings put system netd_native.no_retry_after_cancel 0
+settings put system netd_native.dot_connect_timeout_ms 30000
+settings put system connectivity.data_stall_consecutive_dns_timeout_threshold 5
+
+# Display & Graphics
+settings put system display_manager.com.android.server.display.feature.flags.enable_vsync_low_light_vote false
+settings put system display_manager.com.android.server.display.feature.flags.enable_vsync_low_power_vote false
+settings put system core_graphics.com.android.graphics.surfaceflinger.flags.graphite_renderengine true
+settings put system core_graphics.com.android.graphics.surfaceflinger.flags.multithreaded_present true
+settings put system core_graphics.com.android.graphics.surfaceflinger.flags.enable_layer_command_batching true
+
+# Runtime & Boot
+settings put system runtime_native.metrics.reporting-mods 2
+settings put system runtime_native.use_app_image_startup_cache true
+settings put system runtime_native_boot.use_generational_gc true
+settings put system runtime_native_boot.force_disable_uffd_gc false
+
+# System Animations (Disabled for Max Performance)
+settings put system window_animation_scale 0.0
+settings put system transition_animation_scale 0.0
+settings put system animator_duration_scale 0.0
+
+# Package Manager
+settings put system pm.dexopt.ab-ota speed-profile
+settings put system pm.dexopt.shared speed
+settings put system pm.dexopt.install speed-profile
+settings put system pm.dexopt.bg-dexopt speed-profile
+
+# ============================================================================
+# COMPLETION
+# ============================================================================
+echo ""
+echo "=========================================="
+echo "Optimization Complete!"
+echo "=========================================="
+echo ""
+echo "Applied Settings:"
+echo "✓ Dalvik VM Properties (JIT, Heap, DEX2OAT)"
+echo "✓ GPU & Rendering (Hardware Acceleration)"
+echo "✓ Memory Management (Low RAM disabled)"
+echo "✓ Network Buffers (TCP optimized)"
+echo "✓ Touch Response (Fling velocity)"
+echo "✓ Debug & Logging (Disabled)"
+echo "✓ Power Management (Optimized)"
+echo "✓ All Settings Database entries"
+echo ""
+echo "Total: 200+ system properties optimized"
+echo ""
+echo "IMPORTANT:"
+echo "1. Reboot REQUIRED for changes to take effect"
+echo "2. Some properties may not work on all devices"
+echo "3. No root needed - uses ADB only"
+echo ""
+echo "Rebooting in 5 seconds... (Ctrl+C to cancel)"
+sleep 30
+reboot
+
+# DONE
